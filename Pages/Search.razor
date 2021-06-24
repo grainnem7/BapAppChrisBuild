@@ -1,0 +1,24 @@
+@page "/search"
+@using System.Net.Http
+
+@inject HttpClient client
+
+@using Newtonsoft.Json
+@using Data
+
+@using Microsoft.Extensions.Logging
+@inject ILogger<Search> Logger
+
+<h1>Search</h1>
+
+<p>This component demonstrates searching the datasaset.</p>
+
+<p>One way to tackle this problem;</p>
+<ul>
+    <li>Start with pretty much the same code as FetchStoreApps.razor.</li>
+    <li>Add a form to the page e.g. an input and a submit button.</li>
+    <li>Create a new search model and method.</li>
+    <li>When looping over StoreApps use IndexOf to test your search term.</li>
+    <li><a href="https://docs.microsoft.com/en-us/aspnet/core/blazor/forms-validation?view=aspnetcore-5.0">Blazor Forms</a></li>
+</ul>
+

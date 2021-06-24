@@ -1,0 +1,65 @@
+@page "/fetchstoreapps"
+
+@using System.Net.Http
+
+@inject HttpClient client
+
+@using Newtonsoft.Json
+@using Data
+
+<div class="container-fluid">
+
+    <div class="row justify-content-center" style="margin-bottom:50px">
+        <h3 class="text-center">Store Apps - First Ten Records</h3>
+    </div>
+
+    <div class="row" style="margin:25px;">
+        @if (StoreApps != null)
+        {
+            <table class="table table-bordered table-striped">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Id</th>
+                        <th>Name</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var storeapp in StoreApps)
+                    {
+                        <tr class="justify-content-center">
+                            <td>@storeapp.Id</td>
+                            <td>@storeapp.Name</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+        @if (!StoreApps.Any())
+        {
+            <div class="justify-content-center">
+                <h5>No records to show</h5>
+            </div>
+        }
+    </div>
+
+</div>
+
+@code {
+
+    string responseBody = "";
+    List<StoreApp> StoreApps = new List<StoreApp>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        var apiName = "api/StoreApps/FirstTen";
+        var httpResponse = await client.GetAsync(apiName);
+
+        if (httpResponse.IsSuccessStatusCode)
+        {
+            responseBody = await httpResponse.Content.ReadAsStringAsync();
+            StoreApps = JsonConvert.DeserializeObject<List<StoreApp>>(responseBody);
+            StateHasChanged();
+        }
+
+    }
+}

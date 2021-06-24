@@ -1,0 +1,25 @@
+@page "/delete"
+@using System.Net.Http
+
+@inject HttpClient client
+
+@using Newtonsoft.Json
+@using Data
+
+@using Microsoft.Extensions.Logging
+@inject ILogger<Search> Logger
+
+<h1>Delete</h1>
+
+<p>This component demonstrates deleting from the dataaset.</p>
+
+<p>One way to tackle this problem;</p>
+<ul>
+    <li>Start with pretty much the same code as FetchStoreApps.razor.</li>
+    <li>Add a new column to the data table with a Delete link.</li>
+    <li>Send a DELETE request to the API to delete the record from API's database.</li>
+    <li>The API will need to know the Id of the record you want to delete (onclick="()=>deleteRecord(storeapp)").</li>
+    <li><a href="https://docs.microsoft.com/en-us/aspnet/core/blazor/call-web-api?view=aspnetcore-5.0&pivots=webassembly">Call a web API from Blazor</a></li>
+    <li><a href="https://docs.microsoft.com/en-us/dotnet/api/system.net.http.httpclient.deleteasync?view=net-5.0">DeleteAsync Method</a></li>
+    <li><a href="https://docs.microsoft.com/en-us/aspnet/core/tutorials/first-web-api?view=aspnetcore-5.0&tabs=visual-studio">API Delete</a></li>
+</ul>
