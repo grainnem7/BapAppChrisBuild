@@ -1,10 +1,26 @@
 {
   "version": 2,
-  "dgSpecHash": "3h5Hv/iL0jFLDrIqVK8mq+h7qKN1GuEstVipncccKKAWuGvru1k7jDPXBFFDuwqUzZ+/PBqxSRfuZST5D4hRgA==",
+  "dgSpecHash": "0CAg1Kf6Qc2e2F8CaDZKIYfWAgRspTnRJIi7Sw6YAMRhm+X+EkcxhqsLaj3N0eCdVnUl13fCvAXtW74Il498OQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\kelvi\\Desktop\\bapteam01\\BapBlazor\\BapBlazor.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\kelvi\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512"
+    "C:\\Users\\kelvi\\.nuget\\packages\\blazorise\\0.9.3.9\\blazorise.0.9.3.9.nupkg.sha512",
+    "C:\\Users\\kelvi\\.nuget\\packages\\blazorise.bootstrap\\0.9.3.9\\blazorise.bootstrap.0.9.3.9.nupkg.sha512",
+    "C:\\Users\\kelvi\\.nuget\\packages\\blazorise.icons.fontawesome\\0.9.3.9\\blazorise.icons.fontawesome.0.9.3.9.nupkg.sha512",
+    "C:\\Users\\kelvi\\.nuget\\packages\\microsoft.aspnetcore.authorization\\5.0.0\\microsoft.aspnetcore.authorization.5.0.0.nupkg.sha512",
+    "C:\\Users\\kelvi\\.nuget\\packages\\microsoft.aspnetcore.components\\5.0.0\\microsoft.aspnetcore.components.5.0.0.nupkg.sha512",
+    "C:\\Users\\kelvi\\.nuget\\packages\\microsoft.aspnetcore.components.analyzers\\5.0.0\\microsoft.aspnetcore.components.analyzers.5.0.0.nupkg.sha512",
+    "C:\\Users\\kelvi\\.nuget\\packages\\microsoft.aspnetcore.components.forms\\5.0.0\\microsoft.aspnetcore.components.forms.5.0.0.nupkg.sha512",
+    "C:\\Users\\kelvi\\.nuget\\packages\\microsoft.aspnetcore.components.web\\5.0.0\\microsoft.aspnetcore.components.web.5.0.0.nupkg.sha512",
+    "C:\\Users\\kelvi\\.nuget\\packages\\microsoft.aspnetcore.metadata\\5.0.0\\microsoft.aspnetcore.metadata.5.0.0.nupkg.sha512",
+    "C:\\Users\\kelvi\\.nuget\\packages\\microsoft.extensions.dependencyinjection\\5.0.0\\microsoft.extensions.dependencyinjection.5.0.0.nupkg.sha512",
+    "C:\\Users\\kelvi\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\5.0.0\\microsoft.extensions.dependencyinjection.abstractions.5.0.0.nupkg.sha512",
+    "C:\\Users\\kelvi\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\5.0.0\\microsoft.extensions.logging.abstractions.5.0.0.nupkg.sha512",
+    "C:\\Users\\kelvi\\.nuget\\packages\\microsoft.extensions.options\\5.0.0\\microsoft.extensions.options.5.0.0.nupkg.sha512",
+    "C:\\Users\\kelvi\\.nuget\\packages\\microsoft.extensions.primitives\\5.0.0\\microsoft.extensions.primitives.5.0.0.nupkg.sha512",
+    "C:\\Users\\kelvi\\.nuget\\packages\\microsoft.jsinterop\\5.0.0\\microsoft.jsinterop.5.0.0.nupkg.sha512",
+    "C:\\Users\\kelvi\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512",
+    "C:\\Users\\kelvi\\.nuget\\packages\\system.io.pipelines\\5.0.0\\system.io.pipelines.5.0.0.nupkg.sha512"
   ],
   "logs": []
 }

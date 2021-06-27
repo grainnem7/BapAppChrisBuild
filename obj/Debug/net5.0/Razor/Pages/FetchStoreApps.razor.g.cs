@@ -73,6 +73,13 @@ using BapBlazor.Shared;
 #line hidden
 #nullable disable
 #nullable restore
+#line 11 "C:\Users\kelvi\Desktop\bapteam01\BapBlazor\_Imports.razor"
+using Blazorise;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
 #line 3 "C:\Users\kelvi\Desktop\bapteam01\BapBlazor\Pages\FetchStoreApps.razor"
 using System.Net.Http;
 

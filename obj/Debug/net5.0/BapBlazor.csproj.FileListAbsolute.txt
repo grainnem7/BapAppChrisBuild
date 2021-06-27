@@ -152,8 +152,10 @@ C:\Users\kelvi\Desktop\bapteam01\BapBlazor\bin\Debug\net5.0\ref\BapBlazor.dll
 C:\Users\kelvi\Desktop\bapteam01\BapBlazor\bin\Debug\net5.0\BapBlazor.pdb
 C:\Users\kelvi\Desktop\bapteam01\BapBlazor\bin\Debug\net5.0\BapBlazor.Views.dll
 C:\Users\kelvi\Desktop\bapteam01\BapBlazor\bin\Debug\net5.0\BapBlazor.Views.pdb
+C:\Users\kelvi\Desktop\bapteam01\BapBlazor\bin\Debug\net5.0\Blazorise.dll
+C:\Users\kelvi\Desktop\bapteam01\BapBlazor\bin\Debug\net5.0\Blazorise.Bootstrap.dll
+C:\Users\kelvi\Desktop\bapteam01\BapBlazor\bin\Debug\net5.0\Blazorise.Icons.FontAwesome.dll
 C:\Users\kelvi\Desktop\bapteam01\BapBlazor\bin\Debug\net5.0\Newtonsoft.Json.dll
-C:\Users\kelvi\Desktop\bapteam01\BapBlazor\obj\Debug\net5.0\BapBlazor.csprojAssemblyReference.cache
 C:\Users\kelvi\Desktop\bapteam01\BapBlazor\obj\Debug\net5.0\BapBlazor.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\kelvi\Desktop\bapteam01\BapBlazor\obj\Debug\net5.0\BapBlazor.AssemblyInfoInputs.cache
 C:\Users\kelvi\Desktop\bapteam01\BapBlazor\obj\Debug\net5.0\BapBlazor.AssemblyInfo.cs

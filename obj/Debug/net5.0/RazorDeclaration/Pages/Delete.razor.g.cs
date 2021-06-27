@@ -76,6 +76,13 @@ using BapBlazor.Shared;
 #line hidden
 #nullable disable
 #nullable restore
+#line 11 "C:\Users\kelvi\Desktop\bapteam01\BapBlazor\_Imports.razor"
+using Blazorise;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
 #line 2 "C:\Users\kelvi\Desktop\bapteam01\BapBlazor\Pages\Delete.razor"
 using System.Net.Http;
 
