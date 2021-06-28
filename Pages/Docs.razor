@@ -8,4 +8,88 @@
 
 <h1>API Documentation</h1>
 
+<h2>Get Started</h2>
+<p>
+ The BAP Team 01 API provides programmatic access to read customers data.
+ Retrieve a character, provide an oauth connexion, retrieve a category, filter them, etc
+</p>
+<p>
+ To use this API, you need an API key. Please contact us at customerservice@bapteam01.me 
+to get a personal API key.
+</p>
+
+<h2>Get Characters</h2>
+<p>To get characters you need to make a POST call to the following url :</p>
+<p>https://api.bapteam01.me/character/get</p>
+<br />
+<h2>Query Parameters</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Field</th>
+            <th scope="col">Type</th>
+            <th scope="col">Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th scope="row">1</th>
+            <td>secret_key</td>
+            <td>String</td>
+            <td>Your API key</td>
+        </tr>
+        <tr>
+            <th scope="row">2</th>
+            <td>rating</td>
+            <td>String</td>
+            <td>(optional) a string array of ratings</td>
+        </tr>
+        <tr>
+            <th scope="row">3</th>
+            <td>name</td>
+            <td>String</td>
+            <td>(optional) a string array of names</td>
+        </tr>
+        <tr>
+            <th scope="row">4</th>
+            <td>category</td>
+            <td>String</td>
+            <td>(optional) a string to filter characters by category</td>
+        </tr>
+        <tr>
+            <th scope="row">5</th>
+            <td>people</td>
+            <td>Interger</td>
+            <td>(optional) an interger to filter characters by number of people</td>
+        </tr>
+        <tr>
+            <th scope="row">6</th>
+            <td>id</td>
+            <td>Interger</td>
+            <td>(optional) an interger to filter characters by Id's</td>
+        </tr>
+        <tr>
+            <th scope="row">7</th>
+            <td>price</td>
+            <td>Interger</td>
+            <td>(optional) an interger to filter characters by price</td>
+        </tr>
+        <tr>
+            <th scope="row">8</th>
+            <td>offset</td>
+            <td>Interger</td>
+            <td>(optional - default: 0) A cursor for use in pagination. Pagination starts offset the specified offset</td>
+        </tr>
+        <tr>
+            <th scope="row">9</th>
+            <td>limit</td>
+            <td>Interger</td>
+            <td>(optional - default: 10) A limit on the number of objects to be returned, between 1 and 100</td>
+        </tr>
+    </tbody>
+</table>
+<hr />
+<br />
+
 
