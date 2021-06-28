@@ -10,12 +10,12 @@
 
 <h2>Get Started</h2>
 <p>
- The BAP Team 01 API provides programmatic access to read customers data.
- Retrieve a character, provide an oauth connexion, retrieve a category, filter them, etc
+    The BAP Team 01 API provides programmatic access to read customers data.
+    Retrieve a character, provide an oauth connexion, retrieve a category, filter them, etc
 </p>
 <p>
- To use this API, you need an API key. Please contact us at customerservice@bapteam01.me 
-to get a personal API key.
+    To use this API, you need an API key. Please contact us at customerservice@bapteam01.me
+    to get a personal API key.
 </p>
 
 <h2>Get Characters</h2>
@@ -92,4 +92,73 @@ to get a personal API key.
 <hr />
 <br />
 
-
+@*
+    A list of common REST API error codes
+    https://docs.microsoft.com/en-us/rest/api/storageservices/common-rest-api-error-codes
+*@
+<h2>Errors</h2>
+<p>The BAP Team 01 API uses the following error codes</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Error Code</th>
+            <th scope="col">Meaning</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th scope="row">1</th>
+            <td>200</td>
+            <td>OK - No Error</td>
+        </tr>
+        <tr>
+            <th scope="row">2</th>
+            <td>403</td>
+            <td>
+                Server failed to authenticate the request.
+                Make sure the value of the Authorization header
+                is formed correctly including the signature
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">3</th>
+            <td>400</td>
+            <td>
+                The authentication information was not provided in the
+                correct format. Verify the value of Authorization header.
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">4</th>
+            <td>403</td>
+            <td>
+                The account being accessed does not have sufficient permissions to
+                execute this operation
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">5</th>
+            <td>500</td>
+            <td>
+                The server encountered an internal error. Please retry the request
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">6</th>
+            <td>409</td>
+            <td>
+                The specified resource type does not match the type of the existing
+                resource
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">7</th>
+            <td>503</td>
+            <td>
+                The server is currently unable to receive requests. Please retry
+                your request
+            </td>
+        </tr>
+    </tbody>
+</table>
