@@ -111,6 +111,30 @@ using Data;
         {
         }
         #pragma warning restore 1998
+#nullable restore
+#line 71 "C:\Users\grain\OneDrive\Desktop\BapTeam01\BapBlazor\Pages\Sort.razor"
+       
+
+    string responseBody = "";
+    List<StoreApp> StoreApps = new List<StoreApp>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        var apiName = "api/StoreApps/FirstTen";
+        var httpResponse = await client.GetAsync(apiName);
+
+        if (httpResponse.IsSuccessStatusCode)
+        {
+            responseBody = await httpResponse.Content.ReadAsStringAsync();
+            StoreApps = JsonConvert.DeserializeObject<List<StoreApp>>(responseBody);
+            StateHasChanged();
+        }
+
+    }
+
+#line default
+#line hidden
+#nullable disable
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private HttpClient client { get; set; }
     }
 }

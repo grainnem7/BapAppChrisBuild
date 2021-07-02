@@ -120,7 +120,7 @@ using Data;
 
     protected override async Task OnInitializedAsync()
     {
-        var apiName = "api/StoreApps/FirstTen";
+        var apiName = "api/StoreApps/paged";
         var httpResponse = await client.GetAsync(apiName);
 
         if (httpResponse.IsSuccessStatusCode)
