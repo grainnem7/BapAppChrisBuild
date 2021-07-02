@@ -32,15 +32,15 @@
                 <tbody>
                     @foreach (var storeapp in StoreApps)
                     {
-                    <tr class="justify-content-center">
-                        <td>@storeapp.Id</td>
-                        <td>@storeapp.Name</td>
-                        <td>@storeapp.Rating</td>
-                        <td>@storeapp.People</td>
-                        <td>@storeapp.Category</td>
-                        <td>@storeapp.Date</td>
-                        <td>@storeapp.Price</td>
-                    </tr>
+                        <tr class="justify-content-center">
+                            <td>@storeapp.Id</td>
+                            <td>@storeapp.Name</td>
+                            <td>@storeapp.Rating</td>
+                            <td>@storeapp.People</td>
+                            <td>@storeapp.Category</td>
+                            <td>@storeapp.Date</td>
+                            <td>@storeapp.Price</td>
+                        </tr>
                     }
                 </tbody>
             </table>
@@ -64,8 +64,9 @@
 
     protected override async Task OnInitializedAsync()
     {
-        var apiName = "api/StoreApps/FirstTen";
+        var apiName = "api/StoreApps/";
         //var apiName = "api/StoreApps/paged?pageNumber=1&pageSize=10";
+        //var apiName = "api/StoreApps/paged";
         var httpResponse = await client.GetAsync(apiName);
 
         if (httpResponse.IsSuccessStatusCode)

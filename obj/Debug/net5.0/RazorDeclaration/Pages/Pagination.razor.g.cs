@@ -83,21 +83,21 @@ using Blazorise;
 #line hidden
 #nullable disable
 #nullable restore
-#line 2 "C:\Users\grain\OneDrive\Desktop\BapTeam01\BapBlazor\Pages\Pagination.razor"
+#line 3 "C:\Users\grain\OneDrive\Desktop\BapTeam01\BapBlazor\Pages\Pagination.razor"
 using System.Net.Http;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 6 "C:\Users\grain\OneDrive\Desktop\BapTeam01\BapBlazor\Pages\Pagination.razor"
+#line 7 "C:\Users\grain\OneDrive\Desktop\BapTeam01\BapBlazor\Pages\Pagination.razor"
 using Newtonsoft.Json;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 7 "C:\Users\grain\OneDrive\Desktop\BapTeam01\BapBlazor\Pages\Pagination.razor"
+#line 8 "C:\Users\grain\OneDrive\Desktop\BapTeam01\BapBlazor\Pages\Pagination.razor"
 using Data;
 
 #line default
@@ -112,18 +112,31 @@ using Data;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 58 "C:\Users\grain\OneDrive\Desktop\BapTeam01\BapBlazor\Pages\Pagination.razor"
+#line 54 "C:\Users\grain\OneDrive\Desktop\BapTeam01\BapBlazor\Pages\Pagination.razor"
        
-
-    //http://localhost:5002/api/StoreApps/paged?pageNumber=1&pageSize=10
 
     string responseBody = "";
     List<StoreApp> StoreApps = new List<StoreApp>();
 
+    //Intial API Response
     protected override async Task OnInitializedAsync()
     {
-        var apiName = "api/StoreApps/FirstTen";
-        //var apiName = "api/StoreApps/paged?pageNumber=1&pageSize=10";
+        var apiName = "api/StoreApps/paged";
+        var httpResponse = await client.GetAsync(apiName);
+
+        if (httpResponse.IsSuccessStatusCode)
+        {
+            responseBody = await httpResponse.Content.ReadAsStringAsync();
+            StoreApps = JsonConvert.DeserializeObject<List<StoreApp>>(responseBody);
+            StateHasChanged();
+        }
+    }
+
+    //Gets the page for Nav
+    public async Task GetPageAsync(int start)
+    {
+        var apiName = "api/StoreApps/";
+        apiName += currentCount.ToString();
         var httpResponse = await client.GetAsync(apiName);
 
         if (httpResponse.IsSuccessStatusCode)
@@ -134,6 +147,39 @@ using Data;
         }
 
     }
+
+    //Vars for nav funtions
+    private int currentCount = 0;
+    private string error = "";
+
+    //Move to next set of records
+    private void NextCount()
+    {
+        if (currentCount + 25 < int.MaxValue)
+        {
+            currentCount = currentCount + 25;
+            var responce = GetPageAsync(currentCount);
+        }
+        else
+        {
+            error = "The limit of the database";
+        }
+    }
+
+    //Move to previous set of records
+    private void PrevCount()
+    {
+        if (currentCount - 25 >= 0)
+        {
+            currentCount = currentCount - 25;
+            var responce = GetPageAsync(currentCount);
+        }
+        else
+        {
+            error = "Cant go below zero";
+        }
+    }
+
 
 #line default
 #line hidden
