@@ -22,16 +22,25 @@
                         <th>Id</th>
                         <th>Name</th>
                         <th>Rating</th>
+                        <th>People</th>
+                        <th>Category</th>
+                        <th>Date</th>
+                        <th>Price</th>
+
+
                     </tr>
                 </thead>
                 <tbody>
                     @foreach (var storeapp in StoreApps)
                     {
-                        <tr class="justify-content-center">
-                            <td>@storeapp.Id</td>
-                            <td>@storeapp.Name</td>
-                            <td>@storeapp.Rating</td>
-                        </tr>
+                    <tr class="justify-content-center">
+                        <td>@storeapp.Id</td>
+                        <td>@storeapp.Name</td>
+                        <td>@storeapp.Rating</td>
+                        <td>@storeapp.People</td>
+                        <td>@storeapp.Date</td>
+                        <td>@storeapp.Price</td>
+                    </tr>
                     }
                 </tbody>
             </table>
