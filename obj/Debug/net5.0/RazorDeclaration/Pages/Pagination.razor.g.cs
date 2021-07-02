@@ -112,15 +112,18 @@ using Data;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 55 "C:\Users\grain\OneDrive\Desktop\BapTeam01\BapBlazor\Pages\Pagination.razor"
+#line 58 "C:\Users\grain\OneDrive\Desktop\BapTeam01\BapBlazor\Pages\Pagination.razor"
        
+
+    //http://localhost:5002/api/StoreApps/paged?pageNumber=1&pageSize=10
 
     string responseBody = "";
     List<StoreApp> StoreApps = new List<StoreApp>();
 
     protected override async Task OnInitializedAsync()
     {
-        var apiName = "api/StoreApps/paged";
+        var apiName = "api/StoreApps/FirstTen";
+        //var apiName = "api/StoreApps/paged?pageNumber=1&pageSize=10";
         var httpResponse = await client.GetAsync(apiName);
 
         if (httpResponse.IsSuccessStatusCode)
