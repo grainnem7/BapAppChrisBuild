@@ -20,30 +20,18 @@
         </tr>
     </thead>
     <tbody>
-        <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>moodo</td>
-        </tr>
-        <tr>
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>fat</td>
-        </tr>
-        <tr>
-            <th scope="row">3</th>
-            <td>Marry</td>
-            <td>Thorntonen</td>
-            <td>fatty</td>
-        </tr>
-        <tr>
-            <th scope="row">4</th>
-            <td>James</td>
-            <td>Thorn</td>
-            <td>fatest</td>
-        </tr>
+        @foreach (var storeapp in StoreApps)
+        {
+            <tr class="justify-content-center">
+                <td>@storeapp.Id</td>
+                <td>@storeapp.Name</td>
+                <td>@storeapp.Rating</td>
+                <td>@storeapp.People</td>
+                <td>@storeapp.Category</td>
+                <td>@storeapp.Date</td>
+                <td>@storeapp.Price</td>
+            </tr>
+        }
 
     </tbody>
 </table>
@@ -64,4 +52,22 @@
     </ul>
 </nav>
 
+@code {
 
+    string responseBody = "";
+    List<StoreApp> StoreApps = new List<StoreApp>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        var apiName = "api/StoreApps/FirstTen";
+        var httpResponse = await client.GetAsync(apiName);
+
+        if (httpResponse.IsSuccessStatusCode)
+        {
+            responseBody = await httpResponse.Content.ReadAsStringAsync();
+            StoreApps = JsonConvert.DeserializeObject<List<StoreApp>>(responseBody);
+            StateHasChanged();
+        }
+
+    }
+}
