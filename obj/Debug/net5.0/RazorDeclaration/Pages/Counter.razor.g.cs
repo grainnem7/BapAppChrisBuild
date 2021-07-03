@@ -98,7 +98,7 @@ using Blazorise;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 9 "C:\Users\grain\OneDrive\Desktop\BapTeam01\BapBlazor\Pages\Counter.razor"
+#line 7 "C:\Users\grain\OneDrive\Desktop\BapTeam01\BapBlazor\Pages\Counter.razor"
        
     private int currentCount = 0;
 

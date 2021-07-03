@@ -112,7 +112,7 @@ using Data;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 59 "C:\Users\grain\OneDrive\Desktop\BapTeam01\BapBlazor\Pages\FetchStoreApps.razor"
+#line 61 "C:\Users\grain\OneDrive\Desktop\BapTeam01\BapBlazor\Pages\FetchStoreApps.razor"
        
 
     string responseBody = "";
