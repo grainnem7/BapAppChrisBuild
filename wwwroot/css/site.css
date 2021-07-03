@@ -56,3 +56,12 @@ a, .btn-link {
     margin-right: auto;
     width: 90%;
 }
+
+.row {
+    display: flex;
+}
+
+.column {
+    flex: 25%;
+    padding: 5px;
+}
