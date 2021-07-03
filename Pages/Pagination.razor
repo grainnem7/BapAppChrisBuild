@@ -14,7 +14,7 @@
 
 @if (StoreApps == null)
 {
-                <p><em>Loading...</em></p>
+    <p><em>Loading...</em></p>
 }
 else
 
@@ -37,17 +37,17 @@ else
             {
                 if (StoreApps.IndexOf(storeapp) >= pageStart && StoreApps.IndexOf(storeapp) < pageEnd)
                 {
-            <tr class="justify-content-center">
-                <td>@storeapp.Id</td>
-                <td>@storeapp.Name</td>
-                <td>@storeapp.Rating</td>
-                <td>@storeapp.People</td>
-                <td>@storeapp.Category</td>
-                <td>@storeapp.Date</td>
-                <td>@storeapp.Price</td>
+                    <tr class="justify-content-center">
+                        <td>@storeapp.Id</td>
+                        <td>@storeapp.Name</td>
+                        <td>@storeapp.Rating</td>
+                        <td>@storeapp.People</td>
+                        <td>@storeapp.Category</td>
+                        <td>@storeapp.Date</td>
+                        <td>@storeapp.Price</td>
 
 
-            </tr>
+                    </tr>
                 }
             }
         </tbody>

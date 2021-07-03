@@ -89,14 +89,6 @@ using Blazorise;
 #line default
 #line hidden
 #nullable disable
-#nullable restore
-#line 3 "C:\Users\grain\OneDrive\Desktop\BapTeam01\BapBlazor\Pages\FetchData.razor"
-using BapBlazor.Data;
-
-#line default
-#line hidden
-#nullable disable
-    [Microsoft.AspNetCore.Components.RouteAttribute("/fetchdata")]
     public partial class FetchData : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998
@@ -104,20 +96,6 @@ using BapBlazor.Data;
         {
         }
         #pragma warning restore 1998
-#nullable restore
-#line 39 "C:\Users\grain\OneDrive\Desktop\BapTeam01\BapBlazor\Pages\FetchData.razor"
-       
-    private WeatherForecast[] forecasts;
-
-    protected override async Task OnInitializedAsync()
-    {
-        forecasts = await ForecastService.GetForecastAsync(DateTime.Now);
-    }
-
-#line default
-#line hidden
-#nullable disable
-        [global::Microsoft.AspNetCore.Components.InjectAttribute] private WeatherForecastService ForecastService { get; set; }
     }
 }
 #pragma warning restore 1591
