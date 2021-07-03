@@ -112,9 +112,11 @@ using Data;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 57 "C:\Users\grain\OneDrive\Desktop\BapTeam01\BapBlazor\Pages\Pagination.razor"
+#line 63 "C:\Users\grain\OneDrive\Desktop\BapTeam01\BapBlazor\Pages\Pagination.razor"
        
     string responseBody = "";
+    private bool IsSortedAscending;
+    private string CurrentSortColumn;
 
     List<StoreApp> StoreApps = new List<StoreApp>();
 
@@ -144,6 +146,29 @@ using Data;
     {
         pageStart -= pagerSize;
         pageEnd -= pagerSize;
+
+    }
+    private void SortTable(string columnName)
+    {
+        //if (columnName != CurrentSortColumn)
+        //{
+        //    //We need to force order by descending on the new column
+        //    StoreApps = StoreApps.OrderBy(x => x.GetType().GetProperty(columnName).GetValue(x)).ToList();
+        //    CurrentSortColumn = columnName;
+        //    IsSortedAscending = true;
+
+        //}
+
+        if (IsSortedAscending)
+        {
+            StoreApps = StoreApps.OrderByDescending(x => x.GetType().GetProperty(columnName).GetValue(x)).ToList();
+        }
+        else
+        {
+            StoreApps = StoreApps.OrderBy(x => x.GetType().GetProperty(columnName).GetValue(x)).ToList();
+        }
+
+        IsSortedAscending = !IsSortedAscending;
 
     }
 

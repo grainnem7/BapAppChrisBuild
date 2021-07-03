@@ -22,13 +22,19 @@ else
     <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Rating</th>
-                <th>People</th>
-                <th>Category</th>
-                <th>Date</th>
-                <th>Price</th>
+                <td class="sort-link" @onclick=@(() => SortTable("Id"))>Id </td>
+
+                <td class="sort-link" @onclick=@(() => SortTable("Name"))>Name</td>
+
+                <td class="sort-link" @onclick=@(() => SortTable("Rating"))>Rating</td>
+
+                <td class="sort-link" @onclick=@(() => SortTable("People"))>People</td>
+
+                <td class="sort-link" @onclick=@(() => SortTable("Category"))>Category</td>
+
+                <td class="sort-link" @onclick=@(() => SortTable("Date"))>Date</td>
+
+                <td class="sort-link" @onclick=@(() => SortTable("Price"))>Price</td>
 
             </tr>
         </thead>
@@ -37,7 +43,7 @@ else
             {
                 if (StoreApps.IndexOf(storeapp) >= pageStart && StoreApps.IndexOf(storeapp) < pageEnd)
                 {
-                    <tr class="justify-content-center">
+                    <tr class="justify-content-space-evenly">
                         <td>@storeapp.Id</td>
                         <td>@storeapp.Name</td>
                         <td>@storeapp.Rating</td>
@@ -56,6 +62,8 @@ else
 
 @code {
     string responseBody = "";
+    private bool IsSortedAscending;
+    private string CurrentSortColumn;
 
     List<StoreApp> StoreApps = new List<StoreApp>();
 
@@ -85,6 +93,29 @@ else
     {
         pageStart -= pagerSize;
         pageEnd -= pagerSize;
+
+    }
+    private void SortTable(string columnName)
+    {
+        //if (columnName != CurrentSortColumn)
+        //{
+        //    //We need to force order by descending on the new column
+        //    StoreApps = StoreApps.OrderBy(x => x.GetType().GetProperty(columnName).GetValue(x)).ToList();
+        //    CurrentSortColumn = columnName;
+        //    IsSortedAscending = true;
+
+        //}
+
+        if (IsSortedAscending)
+        {
+            StoreApps = StoreApps.OrderByDescending(x => x.GetType().GetProperty(columnName).GetValue(x)).ToList();
+        }
+        else
+        {
+            StoreApps = StoreApps.OrderBy(x => x.GetType().GetProperty(columnName).GetValue(x)).ToList();
+        }
+
+        IsSortedAscending = !IsSortedAscending;
 
     }
 }
