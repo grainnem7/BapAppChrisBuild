@@ -83,21 +83,21 @@ using Blazorise;
 #line hidden
 #nullable disable
 #nullable restore
-#line 2 "C:\Users\grain\OneDrive\Desktop\BapTeam01\BapBlazor\Pages\Sort.razor"
+#line 3 "C:\Users\grain\OneDrive\Desktop\BapTeam01\BapBlazor\Pages\Sort.razor"
 using System.Net.Http;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 6 "C:\Users\grain\OneDrive\Desktop\BapTeam01\BapBlazor\Pages\Sort.razor"
+#line 7 "C:\Users\grain\OneDrive\Desktop\BapTeam01\BapBlazor\Pages\Sort.razor"
 using Newtonsoft.Json;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 7 "C:\Users\grain\OneDrive\Desktop\BapTeam01\BapBlazor\Pages\Sort.razor"
+#line 8 "C:\Users\grain\OneDrive\Desktop\BapTeam01\BapBlazor\Pages\Sort.razor"
 using Data;
 
 #line default
@@ -112,12 +112,18 @@ using Data;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 71 "C:\Users\grain\OneDrive\Desktop\BapTeam01\BapBlazor\Pages\Sort.razor"
-       
-
+#line 72 "C:\Users\grain\OneDrive\Desktop\BapTeam01\BapBlazor\Pages\Sort.razor"
+      
     string responseBody = "";
     List<StoreApp> StoreApps = new List<StoreApp>();
+    private bool IsSortedAscending;
+    private string CurrentSortColumn;
 
+    /// <summary>
+    /// This method is responsible for loading the initial data the page requires.  We store this sample data
+    /// in a JSON file.
+    /// </summary>
+    /// <returns></returns>
     protected override async Task OnInitializedAsync()
     {
         var apiName = "api/StoreApps/";
@@ -130,6 +136,76 @@ using Data;
             StateHasChanged();
         }
 
+    }
+
+    ///// <summary>
+    ///// This method adds a new ToDo item.
+    ///// </summary>
+    //private void AddTodo()
+    //{
+    //    if (!string.IsNullOrWhiteSpace(newItem))
+    //    {
+    //        var newToDoItem = new ToDoItem()
+    //        {
+    //            DateCreated = DateTime.Now,
+    //            Description = newItem,
+    //            ID = Guid.NewGuid()
+    //        };
+
+    //        items = ToDoService.Add(newToDoItem);
+
+    //        newItem = string.Empty; //We need to reset this string, otherwise the text box will still contain the value typed in.
+    //    }
+    //}
+
+    //private void ToggleToDo(Guid id)
+    //{
+    //    items = ToDoService.Toggle(id);
+    //}
+
+    //private void RemoveTodo(Guid id)
+    //{
+    //    items = ToDoService.Delete(id);
+    //}
+
+    private string GetSortStyle(string columnName)
+    {
+        //if (CurrentSortColumn != columnName)
+        //{
+        //    return string.Empty;
+        //}
+        if (IsSortedAscending)
+        {
+            return "fa-sort-up";
+        }
+        else
+        {
+            return "fa-sort-down";
+        }
+    }
+
+    private void SortTable(string columnName)
+    {
+        //if (columnName != CurrentSortColumn)
+        //{
+        //    //We need to force order by descending on the new column
+        //    StoreApps = StoreApps.OrderBy(x => x.GetType().GetProperty(columnName).GetValue(x)).ToList();
+        //    CurrentSortColumn = columnName;
+        //    IsSortedAscending = true;
+
+            //}
+       
+            if (IsSortedAscending)
+            {
+                StoreApps = StoreApps.OrderByDescending(x => x.GetType().GetProperty(columnName).GetValue(x)).ToList();
+            }
+            else
+            {
+                StoreApps = StoreApps.OrderBy(x => x.GetType().GetProperty(columnName).GetValue(x)).ToList();
+            }
+
+            IsSortedAscending = !IsSortedAscending;
+        
     }
 
 #line default

@@ -1,4 +1,5 @@
 @page "/sort"
+
 @using System.Net.Http
 
 @inject HttpClient client
@@ -6,73 +7,79 @@
 @using Newtonsoft.Json
 @using Data
 
-<h1>Sort</h1>
-
-<p>This component demonstrates sorting the dataset.</p>
-
-<p>One way to tackle this problem;</p>
-<ul>
-    <li>Start with pretty much the same code as FetchStoreApps.razor.</li>
-    <li>Turn your table headers into hyperlinks.</li>
-    <li>When you click on the table header use a method to sort your list accordingly.</li>
-    <li>StoreApps is not a simple list, it is a list of objects.</li>
-    <li>You will need to search on, "sorting a list by object property"</li>
-</ul>
-
-<div class="container-fluid">
-
-    <div class="row justify-content-center" style="margin-bottom:50px">
-        <h3 class="text-center">Store Apps - Sorting</h3>
-    </div>
-
-    <div class="row" style="margin:25px;">
-        @if (StoreApps != null)
-        {
-            <table class="table table-bordered table-striped">
-                <thead class="thead-dark">
-                    <tr>
-                        <th>Id</th>
-                        <th>Name</th>
-                        <th>Rating</th>
-                        <th>People</th>
-                        <th>Category</th>
-                        <th>Date</th>
-                        <th>Price</th>
 
 
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach (var storeapp in StoreApps)
-                    {
-                        <tr class="justify-content-center">
-                            <td>@storeapp.Id</td>
-                            <td>@storeapp.Name</td>
-                            <td>@storeapp.Rating</td>
-                            <td>@storeapp.People</td>
-                            <td>@storeapp.Category</td>
-                            <td>@storeapp.Date</td>
-                            <td>@storeapp.Price</td>
-                        </tr>
-                    }
-                </tbody>
-            </table>
-        }
-        @if (!StoreApps.Any())
-        {
-            <div class="justify-content-center">
-                <h5>No records to show</h5>
-            </div>
-        }
-    </div>
+<h1>To-Do List</h1>
 
-</div>
+@if (StoreApps == null)
+{
+    <p><em>Loading...</em></p>
+}
+else if (!StoreApps.Any())
+{
+    <p><em>No ToDo items exist.  Please add some.</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+ 
+                <th>
+                    <span class="sort-link" @onclick=@(() => SortTable("Id"))>Id</span>
+                    <span class="fa @(GetSortStyle("Id"))"></span>
+                </th>
+                <th>
+                    <span class="sort-link" @onclick=@(() => SortTable("Name"))>Name</span>
+                    <span class="fa @(GetSortStyle("Name"))"></span>
+                </th>
+                <th>
+                    <span class="sort-link" @onclick=@(() => SortTable("Rating"))>Rating</span>
+                    <span class="fa @(GetSortStyle("Rating"))"></span>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var storeapp in StoreApps)
+            {
+            <tr style="caption-side">
+                @*<td><button @onclick="(() => RemoveTodo(item.ID))"><i class="oi oi-trash"></i></button></td>*@
+                <td>@storeapp.Id</td>
+                <td>@storeapp.Name</td>
+                <td>@storeapp.Rating</td>
+                @*<td>
+            @if (item.IsComplete)
+            {
+                <input type=checkbox @onchange="(() => ToggleToDo(item.ID))" checked />
+            }
+            else
+            {
+                <input type=checkbox @onchange="(() => ToggleToDo(item.ID))" />
+            }
+        </td>*@
+            </tr>
+            }
+        </tbody>
+    </table>
+}
 
-@code {
+@*@if (StoreApps != null)
+{
+    
+    
+}*@
 
+@code{
     string responseBody = "";
     List<StoreApp> StoreApps = new List<StoreApp>();
+    private bool IsSortedAscending;
+    private string CurrentSortColumn;
 
+    /// <summary>
+    /// This method is responsible for loading the initial data the page requires.  We store this sample data
+    /// in a JSON file.
+    /// </summary>
+    /// <returns></returns>
     protected override async Task OnInitializedAsync()
     {
         var apiName = "api/StoreApps/";
@@ -86,7 +93,74 @@
         }
 
     }
+
+    ///// <summary>
+    ///// This method adds a new ToDo item.
+    ///// </summary>
+    //private void AddTodo()
+    //{
+    //    if (!string.IsNullOrWhiteSpace(newItem))
+    //    {
+    //        var newToDoItem = new ToDoItem()
+    //        {
+    //            DateCreated = DateTime.Now,
+    //            Description = newItem,
+    //            ID = Guid.NewGuid()
+    //        };
+
+    //        items = ToDoService.Add(newToDoItem);
+
+    //        newItem = string.Empty; //We need to reset this string, otherwise the text box will still contain the value typed in.
+    //    }
+    //}
+
+    //private void ToggleToDo(Guid id)
+    //{
+    //    items = ToDoService.Toggle(id);
+    //}
+
+    //private void RemoveTodo(Guid id)
+    //{
+    //    items = ToDoService.Delete(id);
+    //}
+
+    private string GetSortStyle(string columnName)
+    {
+        //if (CurrentSortColumn != columnName)
+        //{
+        //    return string.Empty;
+        //}
+        if (IsSortedAscending)
+        {
+            return "fa-sort-up";
+        }
+        else
+        {
+            return "fa-sort-down";
+        }
+    }
+
+    private void SortTable(string columnName)
+    {
+        //if (columnName != CurrentSortColumn)
+        //{
+        //    //We need to force order by descending on the new column
+        //    StoreApps = StoreApps.OrderBy(x => x.GetType().GetProperty(columnName).GetValue(x)).ToList();
+        //    CurrentSortColumn = columnName;
+        //    IsSortedAscending = true;
+
+            //}
+       
+            if (IsSortedAscending)
+            {
+                StoreApps = StoreApps.OrderByDescending(x => x.GetType().GetProperty(columnName).GetValue(x)).ToList();
+            }
+            else
+            {
+                StoreApps = StoreApps.OrderBy(x => x.GetType().GetProperty(columnName).GetValue(x)).ToList();
+            }
+
+            IsSortedAscending = !IsSortedAscending;
+        
+    }
 }
-
-
-
