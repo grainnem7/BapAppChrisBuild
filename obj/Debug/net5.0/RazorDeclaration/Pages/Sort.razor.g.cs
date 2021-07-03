@@ -112,7 +112,7 @@ using Data;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 72 "C:\Users\grain\OneDrive\Desktop\BapTeam01\BapBlazor\Pages\Sort.razor"
+#line 93 "C:\Users\grain\OneDrive\Desktop\BapTeam01\BapBlazor\Pages\Sort.razor"
       
     string responseBody = "";
     List<StoreApp> StoreApps = new List<StoreApp>();
@@ -168,21 +168,21 @@ using Data;
     //    items = ToDoService.Delete(id);
     //}
 
-    private string GetSortStyle(string columnName)
-    {
-        //if (CurrentSortColumn != columnName)
-        //{
-        //    return string.Empty;
-        //}
-        if (IsSortedAscending)
-        {
-            return "fa-sort-up";
-        }
-        else
-        {
-            return "fa-sort-down";
-        }
-    }
+    //private string GetSortStyle(string columnName)
+    //{
+    //    //if (CurrentSortColumn != columnName)
+    //    //{
+    //    //    return string.Empty;
+    //    //}
+    //    if (IsSortedAscending)
+    //    {
+    //        return "fa-sort-up";
+    //    }
+    //    else
+    //    {
+    //        return "fa-sort-down";
+    //    }
+    //}
 
     private void SortTable(string columnName)
     {
@@ -193,19 +193,19 @@ using Data;
         //    CurrentSortColumn = columnName;
         //    IsSortedAscending = true;
 
-            //}
-       
-            if (IsSortedAscending)
-            {
-                StoreApps = StoreApps.OrderByDescending(x => x.GetType().GetProperty(columnName).GetValue(x)).ToList();
-            }
-            else
-            {
-                StoreApps = StoreApps.OrderBy(x => x.GetType().GetProperty(columnName).GetValue(x)).ToList();
-            }
+        //}
 
-            IsSortedAscending = !IsSortedAscending;
-        
+        if (IsSortedAscending)
+        {
+            StoreApps = StoreApps.OrderByDescending(x => x.GetType().GetProperty(columnName).GetValue(x)).ToList();
+        }
+        else
+        {
+            StoreApps = StoreApps.OrderBy(x => x.GetType().GetProperty(columnName).GetValue(x)).ToList();
+        }
+
+        IsSortedAscending = !IsSortedAscending;
+
     }
 
 #line default

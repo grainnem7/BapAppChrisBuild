@@ -17,57 +17,78 @@
 }
 else if (!StoreApps.Any())
 {
-    <p><em>No ToDo items exist.  Please add some.</em></p>
+    <p><em>No items to show</em></p>
 }
 else
 {
-    <table class="table">
-        <thead>
-            <tr>
- 
-                <th>
-                    <span class="sort-link" @onclick=@(() => SortTable("Id"))>Id</span>
-                    <span class="fa @(GetSortStyle("Id"))"></span>
-                </th>
-                <th>
-                    <span class="sort-link" @onclick=@(() => SortTable("Name"))>Name</span>
-                    <span class="fa @(GetSortStyle("Name"))"></span>
-                </th>
-                <th>
-                    <span class="sort-link" @onclick=@(() => SortTable("Rating"))>Rating</span>
-                    <span class="fa @(GetSortStyle("Rating"))"></span>
-                </th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var storeapp in StoreApps)
-            {
-            <tr style="caption-side">
-                @*<td><button @onclick="(() => RemoveTodo(item.ID))"><i class="oi oi-trash"></i></button></td>*@
-                <td>@storeapp.Id</td>
-                <td>@storeapp.Name</td>
-                <td>@storeapp.Rating</td>
-                @*<td>
-            @if (item.IsComplete)
-            {
-                <input type=checkbox @onchange="(() => ToggleToDo(item.ID))" checked />
-            }
-            else
-            {
-                <input type=checkbox @onchange="(() => ToggleToDo(item.ID))" />
-            }
-        </td>*@
-            </tr>
-            }
-        </tbody>
-    </table>
+
+
+
+    <div class="container-fluid">
+
+        <div class="row justify-content-center" style="margin-bottom:50px">
+            <h3 class="text-center">Store Apps - First Ten Records</h3>
+        </div>
+
+        <div class="row" style="margin:25px;">
+
+            <table class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+
+                        
+                            <td class="sort-link" @onclick=@(() => SortTable("Id"))>Id </td>
+                       
+                            <td class="sort-link" @onclick=@(() => SortTable("Name"))>Name</td>
+                          
+                             <td class="sort-link" @onclick=@(() => SortTable("Rating"))>Rating</td>
+                          
+                            <td class="sort-link" @onclick=@(() => SortTable("People"))>People</td>
+                          
+                            <td class="sort-link" @onclick=@(() => SortTable("Category"))>Category</td>
+                           
+                            <td class="sort-link" @onclick=@(() => SortTable("Date"))>Date</td>
+                           
+                            <td class="sort-link" @onclick=@(() => SortTable("Price"))>Price</td>  
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var storeapp in StoreApps)
+                    {
+                        <tr style="caption-side">
+                            @*<td><button @onclick="(() => RemoveTodo(item.ID))"><i class="oi oi-trash"></i></button></td>*@
+                            <td>@storeapp.Id</td>
+                            <td>@storeapp.Name</td>
+                            <td>@storeapp.Rating</td>
+                            <td>@storeapp.People</td>
+                            <td>@storeapp.Category</td>
+                            <td>@storeapp.Date</td>
+                            <td>@storeapp.Price</td>
+                            @*<td>
+                                    @if (item.IsComplete)
+                                    {
+                                        <input type=checkbox @onchange="(() => ToggleToDo(item.ID))" checked />
+                                    }
+                                    else
+                                    {
+                                        <input type=checkbox @onchange="(() => ToggleToDo(item.ID))" />
+                                    }
+                                </td>*@
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
 }
 
 @*@if (StoreApps != null)
-{
-    
-    
-}*@
+    {
+
+
+    }*@
 
 @code{
     string responseBody = "";
@@ -124,21 +145,21 @@ else
     //    items = ToDoService.Delete(id);
     //}
 
-    private string GetSortStyle(string columnName)
-    {
-        //if (CurrentSortColumn != columnName)
-        //{
-        //    return string.Empty;
-        //}
-        if (IsSortedAscending)
-        {
-            return "fa-sort-up";
-        }
-        else
-        {
-            return "fa-sort-down";
-        }
-    }
+    //private string GetSortStyle(string columnName)
+    //{
+    //    //if (CurrentSortColumn != columnName)
+    //    //{
+    //    //    return string.Empty;
+    //    //}
+    //    if (IsSortedAscending)
+    //    {
+    //        return "fa-sort-up";
+    //    }
+    //    else
+    //    {
+    //        return "fa-sort-down";
+    //    }
+    //}
 
     private void SortTable(string columnName)
     {
@@ -149,18 +170,18 @@ else
         //    CurrentSortColumn = columnName;
         //    IsSortedAscending = true;
 
-            //}
-       
-            if (IsSortedAscending)
-            {
-                StoreApps = StoreApps.OrderByDescending(x => x.GetType().GetProperty(columnName).GetValue(x)).ToList();
-            }
-            else
-            {
-                StoreApps = StoreApps.OrderBy(x => x.GetType().GetProperty(columnName).GetValue(x)).ToList();
-            }
+        //}
 
-            IsSortedAscending = !IsSortedAscending;
-        
+        if (IsSortedAscending)
+        {
+            StoreApps = StoreApps.OrderByDescending(x => x.GetType().GetProperty(columnName).GetValue(x)).ToList();
+        }
+        else
+        {
+            StoreApps = StoreApps.OrderBy(x => x.GetType().GetProperty(columnName).GetValue(x)).ToList();
+        }
+
+        IsSortedAscending = !IsSortedAscending;
+
     }
 }
