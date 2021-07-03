@@ -13,91 +13,91 @@ namespace BapBlazor.Pages
     using System.Threading.Tasks;
     using Microsoft.AspNetCore.Components;
 #nullable restore
-#line 2 "C:\Users\grain\OneDrive\Desktop\BapTeam01\BapBlazor\_Imports.razor"
+#line 2 "C:\Users\ruper\source\repos\bapteam01\BapBlazor\_Imports.razor"
 using Microsoft.AspNetCore.Authorization;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 3 "C:\Users\grain\OneDrive\Desktop\BapTeam01\BapBlazor\_Imports.razor"
+#line 3 "C:\Users\ruper\source\repos\bapteam01\BapBlazor\_Imports.razor"
 using Microsoft.AspNetCore.Components.Authorization;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 4 "C:\Users\grain\OneDrive\Desktop\BapTeam01\BapBlazor\_Imports.razor"
+#line 4 "C:\Users\ruper\source\repos\bapteam01\BapBlazor\_Imports.razor"
 using Microsoft.AspNetCore.Components.Forms;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 5 "C:\Users\grain\OneDrive\Desktop\BapTeam01\BapBlazor\_Imports.razor"
+#line 5 "C:\Users\ruper\source\repos\bapteam01\BapBlazor\_Imports.razor"
 using Microsoft.AspNetCore.Components.Routing;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 6 "C:\Users\grain\OneDrive\Desktop\BapTeam01\BapBlazor\_Imports.razor"
+#line 6 "C:\Users\ruper\source\repos\bapteam01\BapBlazor\_Imports.razor"
 using Microsoft.AspNetCore.Components.Web;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 7 "C:\Users\grain\OneDrive\Desktop\BapTeam01\BapBlazor\_Imports.razor"
+#line 7 "C:\Users\ruper\source\repos\bapteam01\BapBlazor\_Imports.razor"
 using Microsoft.AspNetCore.Components.Web.Virtualization;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 8 "C:\Users\grain\OneDrive\Desktop\BapTeam01\BapBlazor\_Imports.razor"
+#line 8 "C:\Users\ruper\source\repos\bapteam01\BapBlazor\_Imports.razor"
 using Microsoft.JSInterop;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 9 "C:\Users\grain\OneDrive\Desktop\BapTeam01\BapBlazor\_Imports.razor"
+#line 9 "C:\Users\ruper\source\repos\bapteam01\BapBlazor\_Imports.razor"
 using BapBlazor;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 10 "C:\Users\grain\OneDrive\Desktop\BapTeam01\BapBlazor\_Imports.razor"
+#line 10 "C:\Users\ruper\source\repos\bapteam01\BapBlazor\_Imports.razor"
 using BapBlazor.Shared;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 11 "C:\Users\grain\OneDrive\Desktop\BapTeam01\BapBlazor\_Imports.razor"
+#line 11 "C:\Users\ruper\source\repos\bapteam01\BapBlazor\_Imports.razor"
 using Blazorise;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 3 "C:\Users\grain\OneDrive\Desktop\BapTeam01\BapBlazor\Pages\Pagination.razor"
+#line 2 "C:\Users\ruper\source\repos\bapteam01\BapBlazor\Pages\Pagination.razor"
 using System.Net.Http;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 7 "C:\Users\grain\OneDrive\Desktop\BapTeam01\BapBlazor\Pages\Pagination.razor"
+#line 6 "C:\Users\ruper\source\repos\bapteam01\BapBlazor\Pages\Pagination.razor"
 using Newtonsoft.Json;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 8 "C:\Users\grain\OneDrive\Desktop\BapTeam01\BapBlazor\Pages\Pagination.razor"
+#line 7 "C:\Users\ruper\source\repos\bapteam01\BapBlazor\Pages\Pagination.razor"
 using Data;
 
 #line default
@@ -112,31 +112,19 @@ using Data;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 54 "C:\Users\grain\OneDrive\Desktop\BapTeam01\BapBlazor\Pages\Pagination.razor"
+#line 58 "C:\Users\ruper\source\repos\bapteam01\BapBlazor\Pages\Pagination.razor"
        
+
+    //http://localhost:5002/api/StoreApps/paged?pageNumber=1&pageSize=10
 
     string responseBody = "";
     List<StoreApp> StoreApps = new List<StoreApp>();
 
-    //Intial API Response
     protected override async Task OnInitializedAsync()
     {
-        var apiName = "api/StoreApps/paged";
-        var httpResponse = await client.GetAsync(apiName);
-
-        if (httpResponse.IsSuccessStatusCode)
-        {
-            responseBody = await httpResponse.Content.ReadAsStringAsync();
-            StoreApps = JsonConvert.DeserializeObject<List<StoreApp>>(responseBody);
-            StateHasChanged();
-        }
-    }
-
-    //Gets the page for Nav
-    public async Task GetPageAsync(int start)
-    {
         var apiName = "api/StoreApps/";
-        apiName += currentCount.ToString();
+        //var apiName = "api/StoreApps/paged?pageNumber=1&pageSize=10";
+        //var apiName = "api/StoreApps/paged";
         var httpResponse = await client.GetAsync(apiName);
 
         if (httpResponse.IsSuccessStatusCode)
@@ -147,39 +135,6 @@ using Data;
         }
 
     }
-
-    //Vars for nav funtions
-    private int currentCount = 0;
-    private string error = "";
-
-    //Move to next set of records
-    private void NextCount()
-    {
-        if (currentCount + 25 < int.MaxValue)
-        {
-            currentCount = currentCount + 25;
-            var responce = GetPageAsync(currentCount);
-        }
-        else
-        {
-            error = "The limit of the database";
-        }
-    }
-
-    //Move to previous set of records
-    private void PrevCount()
-    {
-        if (currentCount - 25 >= 0)
-        {
-            currentCount = currentCount - 25;
-            var responce = GetPageAsync(currentCount);
-        }
-        else
-        {
-            error = "Cant go below zero";
-        }
-    }
-
 
 #line default
 #line hidden
