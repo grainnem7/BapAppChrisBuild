@@ -13,6 +13,13 @@ namespace BapBlazor.Pages
     using System.Threading.Tasks;
     using Microsoft.AspNetCore.Components;
 #nullable restore
+#line 1 "C:\Users\ruper\source\repos\bapteam01\BapBlazor\_Imports.razor"
+using System.Net.Http;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
 #line 2 "C:\Users\ruper\source\repos\bapteam01\BapBlazor\_Imports.razor"
 using Microsoft.AspNetCore.Authorization;
 
@@ -82,35 +89,6 @@ using Blazorise;
 #line default
 #line hidden
 #nullable disable
-#nullable restore
-#line 2 "C:\Users\ruper\source\repos\bapteam01\BapBlazor\Pages\Delete.razor"
-using System.Net.Http;
-
-#line default
-#line hidden
-#nullable disable
-#nullable restore
-#line 6 "C:\Users\ruper\source\repos\bapteam01\BapBlazor\Pages\Delete.razor"
-using Newtonsoft.Json;
-
-#line default
-#line hidden
-#nullable disable
-#nullable restore
-#line 7 "C:\Users\ruper\source\repos\bapteam01\BapBlazor\Pages\Delete.razor"
-using Data;
-
-#line default
-#line hidden
-#nullable disable
-#nullable restore
-#line 9 "C:\Users\ruper\source\repos\bapteam01\BapBlazor\Pages\Delete.razor"
-using Microsoft.Extensions.Logging;
-
-#line default
-#line hidden
-#nullable disable
-    [Microsoft.AspNetCore.Components.RouteAttribute("/delete")]
     public partial class Delete : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998
@@ -118,8 +96,6 @@ using Microsoft.Extensions.Logging;
         {
         }
         #pragma warning restore 1998
-        [global::Microsoft.AspNetCore.Components.InjectAttribute] private ILogger<Search> Logger { get; set; }
-        [global::Microsoft.AspNetCore.Components.InjectAttribute] private HttpClient client { get; set; }
     }
 }
 #pragma warning restore 1591

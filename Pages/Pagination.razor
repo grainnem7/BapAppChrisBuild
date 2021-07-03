@@ -6,67 +6,62 @@
 @using Newtonsoft.Json
 @using Data
 
-<div class="container-fluid">
+<h1>Pagination</h1>
 
-    <div class="row justify-content-center" style="margin-bottom:50px">
-        <h3 class="text-center">Pagination</h3>
-    </div>
+<p>This component demonstrates pagination of the dataset</p>
 
-    <div class="row" style="margin:25px;">
-        @if (StoreApps != null)
-        {
-            <table class="table table-bordered table-striped">
-                <thead class="thead-dark">
-                    <tr>
-                        <th>Id</th>
-                        <th>Name</th>
-                        <th>Rating</th>
-                        <th>People</th>
-                        <th>Category</th>
-                        <th>Date</th>
-                        <th>Price</th>
+<button class="btn btn-primary" @onclick="Previous">Previous</button> &nbsp; <button class="btn btn-primary" @onclick="Next">Next</button>
+
+@if (StoreApps == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Rating</th>
+                <th>People</th>
+                <th>Category</th>
+                <th>Date</th>
+                <th>Price</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var storeapp in StoreApps)
+            {
+                if (StoreApps.IndexOf(storeapp) >= pageStart && StoreApps.IndexOf(storeapp) < pageEnd)
+                {
+                    <tr class="justify-content-center">
+                        <td>@storeapp.Id</td>
+                        <td>@storeapp.Name</td>
+                        <td>@storeapp.Rating</td>
+                        <td>@storeapp.People</td>
+                        <td>@storeapp.Category</td>
+                        <td>@storeapp.Date</td>
+                        <td>@storeapp.Price</td>
 
 
                     </tr>
-                </thead>
-                <tbody>
-                    @foreach (var storeapp in StoreApps)
-                    {
-                        <tr class="justify-content-center">
-                            <td>@storeapp.Id</td>
-                            <td>@storeapp.Name</td>
-                            <td>@storeapp.Rating</td>
-                            <td>@storeapp.People</td>
-                            <td>@storeapp.Category</td>
-                            <td>@storeapp.Date</td>
-                            <td>@storeapp.Price</td>
-                        </tr>
-                    }
-                </tbody>
-            </table>
-        }
-        @if (!StoreApps.Any())
-        {
-            <div class="justify-content-center">
-                <h5>No records to show</h5>
-            </div>
-        }
-    </div>
-
-</div>
+                }
+            }
+        </tbody>
+    </table>
+}
 
 @code {
-
-    //http://localhost:5002/api/StoreApps/paged?pageNumber=1&pageSize=10
-
     string responseBody = "";
+
     List<StoreApp> StoreApps = new List<StoreApp>();
 
     protected override async Task OnInitializedAsync()
     {
-        var apiName = "api/StoreApps/";
-        //var apiName = "api/StoreApps/paged?pageNumber=1&pageSize=10";
-        //var apiName = "api/StoreApps/paged";
+        var apiName = "api/StoreApps";
         var httpResponse = await client.GetAsync(apiName);
 
         if (httpResponse.IsSuccessStatusCode)
@@ -75,10 +70,21 @@
             StoreApps = JsonConvert.DeserializeObject<List<StoreApp>>(responseBody);
             StateHasChanged();
         }
+    }
+    private int pageStart = 0;
+    private int pageEnd = 10;
+    private int pagerSize = 10;
+
+    private void Next()
+    {
+        pageStart += pagerSize;
+        pageEnd += pagerSize;
+    }
+
+    private void Previous()
+    {
+        pageStart -= pagerSize;
+        pageEnd -= pagerSize;
 
     }
 }
-
-
-
-

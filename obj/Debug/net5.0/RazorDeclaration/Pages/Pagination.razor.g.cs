@@ -112,19 +112,15 @@ using Data;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 58 "C:\Users\ruper\source\repos\bapteam01\BapBlazor\Pages\Pagination.razor"
+#line 57 "C:\Users\ruper\source\repos\bapteam01\BapBlazor\Pages\Pagination.razor"
        
-
-    //http://localhost:5002/api/StoreApps/paged?pageNumber=1&pageSize=10
-
     string responseBody = "";
+
     List<StoreApp> StoreApps = new List<StoreApp>();
 
     protected override async Task OnInitializedAsync()
     {
-        var apiName = "api/StoreApps/";
-        //var apiName = "api/StoreApps/paged?pageNumber=1&pageSize=10";
-        //var apiName = "api/StoreApps/paged";
+        var apiName = "api/StoreApps";
         var httpResponse = await client.GetAsync(apiName);
 
         if (httpResponse.IsSuccessStatusCode)
@@ -133,6 +129,21 @@ using Data;
             StoreApps = JsonConvert.DeserializeObject<List<StoreApp>>(responseBody);
             StateHasChanged();
         }
+    }
+    private int pageStart = 0;
+    private int pageEnd = 10;
+    private int pagerSize = 10;
+
+    private void Next()
+    {
+        pageStart += pagerSize;
+        pageEnd += pagerSize;
+    }
+
+    private void Previous()
+    {
+        pageStart -= pagerSize;
+        pageEnd -= pagerSize;
 
     }
 
