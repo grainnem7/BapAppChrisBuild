@@ -368,3 +368,5 @@ C:\Users\ruper\source\repos\bapteam01\BapBlazor\obj\Debug\net5.0\BapBlazor.dll
 C:\Users\ruper\source\repos\bapteam01\BapBlazor\obj\Debug\net5.0\ref\BapBlazor.dll
 C:\Users\ruper\source\repos\bapteam01\BapBlazor\obj\Debug\net5.0\BapBlazor.pdb
 C:\Users\ruper\source\repos\bapteam01\BapBlazor\obj\Debug\net5.0\BapBlazor.genruntimeconfig.cache
+C:\Users\grain\OneDrive\Desktop\BapTeam01\BapBlazor\obj\Debug\net5.0\RazorDeclaration\Pages\ConsultantTeam.razor.g.cs
+C:\Users\grain\OneDrive\Desktop\BapTeam01\BapBlazor\obj\Debug\net5.0\Razor\Pages\ConsultantTeam.razor.g.cs
