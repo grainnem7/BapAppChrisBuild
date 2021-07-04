@@ -9,119 +9,113 @@
 @using Microsoft.Extensions.Logging
 @inject ILogger<Search> Logger
 
-    <h1>Add App </h1>
 
-    <p>Add new App to the database </p>
 
-    <EditForm Model="@storeApp" OnValidSubmit="@HandleValidSubmit">
-        <DataAnnotationsValidator />
+<h1>Add App </h1>
+
+<p>Add new App to the database </p>
+
+<div class="container-fluid">
+    <EditForm class="form-inline my-2" Model="@storeApp" OnValidSubmit="@SubmitApp">
 
         <label>Name of App:</label>
-        <InputText @bind-Value="storeApp.Name" id="Name">
+        <InputText class="form-control rounded" id ="name " @bind-Value="storeApp.Name" >
         </InputText>
 
-        <InputText @bind-Value="storeApp.Category" id="Catergory">
-
+        <InputText class="form-control rounded" id ="Catergory"  @bind-Value="storeApp.Category">
         </InputText>
 
-        <InputText @bind-Value="storeApp.Date" id="Date">
-
+        <InputText class="form-control rounded" id ="Date "  @bind-Value="storeApp.Date">
         </InputText>
-        <InputNumber @bind-Value="storeApp.Price" id="Price">
+        <InputNumber class="form-control rounded" id ="Price "  @bind-Value="storeApp.Price">
         </InputNumber>
 
-        <button>Submit</button>
+        <button class="btn btn-outline-primary" type="button" >Submit</button>
 
     </EditForm>
-    @code
-{
-        private StoreApp storeApp = new();
 
-        private void HandleValidSubmit()
-        {
-            Logger.LogInformation("HandleValidSubmit Called");
-        }
+
+
+
+
+</div>
+
+@code
+{
+    private StoreApp storeApp = new();
+
+    private void SubmitApp()
+    {
+        Logger.LogInformation("SubmitApp called");
 
     }
+}
 
-   
+<div class="container-fluid">
 
-    <p>One way to tackle this problem;</p>
-    <ul>
-        <li>Start with pretty much the same code as FetchStoreApps.razor.</li>
-        <li>Add a form to the page e.g. inputs and a submit button.</li>
-        <li>Post the form to the API to add the new record to the API's database.</li>
-        <li>Add the response from the API to the empty StoreApps list.</li>
-        <li>Show the result form your updated list.</li>
-        <li><a href="https://docs.microsoft.com/en-us/aspnet/core/blazor/forms-validation?view=aspnetcore-5.0">Blazor Forms</a></li>
-        <li><a href="https://docs.microsoft.com/en-us/previous-versions/aspnet/hh944682(v=vs.118)">PostAsJsonAsync Method</a></li>
-        <li><a href="https://docs.microsoft.com/en-us/aspnet/core/tutorials/first-web-api?view=aspnetcore-5.0&tabs=visual-studio">API Post</a></li>
-    </ul>
-    <div class="container-fluid">
-
-        <div class="row justify-content-center" style="margin-bottom:50px">
-
-        </div>
-
-        <div class="row" style="margin:25px;">
-            @if (StoreApps != null)
-            {
-                <table class="table table-bordered table-striped">
-                    <thead class="thead-dark">
-                        <tr>
-                            <th>Id</th>
-                            <th>Name</th>
-                            <th>Rating</th>
-                            <th>People</th>
-                            <th>Category</th>
-                            <th>Date</th>
-                            <th>Price</th>
-
-
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach (var storeapp in StoreApps)
-                        {
-                            <tr class="justify-content-center">
-                                <td>@storeapp.Id</td>
-                                <td>@storeapp.Name</td>
-                                <td>@storeapp.Rating</td>
-                                <td>@storeapp.People</td>
-                                <td>@storeapp.Category</td>
-                                <td>@storeapp.Date</td>
-                                <td>@storeapp.Price</td>
-                            </tr>
-                        }
-                    </tbody>
-                </table>
-            }
-            @if (!StoreApps.Any())
-            {
-                <div class="justify-content-center">
-                    <h5>No records to show</h5>
-                </div>
-            }
-        </div>
+    <div class="row justify-content-center" style="margin-bottom:50px">
 
     </div>
 
-    @code {
-
-        string responseBody = "";
-        List<StoreApp> StoreApps = new List<StoreApp>();
-
-        protected override async Task OnInitializedAsync()
+    <div class="row" style="margin:25px;">
+        @if (StoreApps != null)
         {
-            var apiName = "api/StoreApps/CreateApp";
-            var httpResponse = await client.GetAsync(apiName);
+            <table class="table table-bordered table-striped">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Id</th>
+                        <th>Name</th>
+                        <th>Rating</th>
+                        <th>People</th>
+                        <th>Category</th>
+                        <th>Date</th>
+                        <th>Price</th>
 
-            if (httpResponse.IsSuccessStatusCode)
-            {
-                responseBody = await httpResponse.Content.ReadAsStringAsync();
-                StoreApps = JsonConvert.DeserializeObject<List<StoreApp>>(responseBody);
-                StateHasChanged();
-            }
 
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var storeapp in StoreApps)
+                    {
+                        <tr class="justify-content-center">
+                            <td>@storeapp.Id</td>
+                            <td>@storeapp.Name</td>
+                            <td>@storeapp.Rating</td>
+                            <td>@storeapp.People</td>
+                            <td>@storeapp.Category</td>
+                            <td>@storeapp.Date</td>
+                            <td>@storeapp.Price</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
         }
+        @if (!StoreApps.Any())
+        {
+            <div class="justify-content-center">
+                <h5>No records to show</h5>
+            </div>
+        }
+    </div>
+
+</div>
+
+@code {
+
+    string responseBody = "";
+    List<StoreApp> StoreApps = new List<StoreApp>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        var apiName = "api/StoreApps/CreateApp";
+        var httpResponse = await client.GetAsync(apiName);
+
+        if (httpResponse.IsSuccessStatusCode)
+        {
+            responseBody = await httpResponse.Content.ReadAsStringAsync();
+            StoreApps = JsonConvert.DeserializeObject<List<StoreApp>>(responseBody);
+            StateHasChanged();
+        }
+
     }
+}
