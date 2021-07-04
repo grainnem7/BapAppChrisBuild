@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\ruper\\OneDrive\\Desktop\\bapteam01\\BapBlazor\\BapBlazor.csproj": {}
+    "C:\\Users\\Student\\Desktop\\bapteam01\\BapBlazor\\BapBlazor.csproj": {}
   },
   "projects": {
-    "C:\\Users\\ruper\\OneDrive\\Desktop\\bapteam01\\BapBlazor\\BapBlazor.csproj": {
+    "C:\\Users\\Student\\Desktop\\bapteam01\\BapBlazor\\BapBlazor.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\ruper\\OneDrive\\Desktop\\bapteam01\\BapBlazor\\BapBlazor.csproj",
+        "projectUniqueName": "C:\\Users\\Student\\Desktop\\bapteam01\\BapBlazor\\BapBlazor.csproj",
         "projectName": "BapBlazor",
-        "projectPath": "C:\\Users\\ruper\\OneDrive\\Desktop\\bapteam01\\BapBlazor\\BapBlazor.csproj",
-        "packagesPath": "C:\\Users\\ruper\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\ruper\\OneDrive\\Desktop\\bapteam01\\BapBlazor\\obj\\",
+        "projectPath": "C:\\Users\\Student\\Desktop\\bapteam01\\BapBlazor\\BapBlazor.csproj",
+        "packagesPath": "C:\\Users\\Student\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Student\\Desktop\\bapteam01\\BapBlazor\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\ruper\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Student\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -79,7 +79,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.301\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.202\\RuntimeIdentifierGraph.json"
         }
       }
     }
