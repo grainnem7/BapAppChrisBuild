@@ -544,3 +544,5 @@ C:\Users\grain\OneDrive\Desktop\BapTeam01\BapBlazor\obj\Debug\net5.0\RazorDeclar
 C:\Users\grain\OneDrive\Desktop\BapTeam01\BapBlazor\obj\Debug\net5.0\Razor\Pages\ViewData.razor.g.cs
 C:\Users\Student\Desktop\bapteam01\BapBlazor\obj\Debug\net5.0\RazorDeclaration\Pages\ViewData.razor.g.cs
 C:\Users\Student\Desktop\bapteam01\BapBlazor\obj\Debug\net5.0\Razor\Pages\ViewData.razor.g.cs
+C:\Users\grain\OneDrive\Desktop\BapTeam01\BapBlazor\obj\Debug\net5.0\RazorDeclaration\Pages\DataVisualisations.razor.g.cs
+C:\Users\grain\OneDrive\Desktop\BapTeam01\BapBlazor\obj\Debug\net5.0\Razor\Pages\DataVisualisations.razor.g.cs
