@@ -126,25 +126,41 @@ using Microsoft.Extensions.Logging;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 79 "C:\Users\ruper\OneDrive\Desktop\bapteam01\BapBlazor\Pages\Add.razor"
-       
+#line 36 "C:\Users\ruper\OneDrive\Desktop\bapteam01\BapBlazor\Pages\Add.razor"
+ 
+        private StoreApp storeApp = new();
 
-    string responseBody = "";
-    List<StoreApp> StoreApps = new List<StoreApp>();
-
-    protected override async Task OnInitializedAsync()
-    {
-        var apiName = "api/StoreApps/CreateApp";
-        var httpResponse = await client.GetAsync(apiName);
-
-        if (httpResponse.IsSuccessStatusCode)
+        private void HandleValidSubmit()
         {
-            responseBody = await httpResponse.Content.ReadAsStringAsync();
-            StoreApps = JsonConvert.DeserializeObject<List<StoreApp>>(responseBody);
-            StateHasChanged();
+            Logger.LogInformation("HandleValidSubmit Called");
         }
 
-    }
+    
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 110 "C:\Users\ruper\OneDrive\Desktop\bapteam01\BapBlazor\Pages\Add.razor"
+           
+
+        string responseBody = "";
+        List<StoreApp> StoreApps = new List<StoreApp>();
+
+        protected override async Task OnInitializedAsync()
+        {
+            var apiName = "api/StoreApps/CreateApp";
+            var httpResponse = await client.GetAsync(apiName);
+
+            if (httpResponse.IsSuccessStatusCode)
+            {
+                responseBody = await httpResponse.Content.ReadAsStringAsync();
+                StoreApps = JsonConvert.DeserializeObject<List<StoreApp>>(responseBody);
+                StateHasChanged();
+            }
+
+        }
+    
 
 #line default
 #line hidden

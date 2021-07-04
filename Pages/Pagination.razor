@@ -8,7 +8,8 @@
 
 <h1>Pagination & Sorting </h1>
 
-<p>This component demonstrates pagination and sorting of the dataset</p>
+<p>This component demonstrates pagination and sorting of the dataset </p>
+
 
 <button class="btn btn-primary" @onclick="Previous">Previous</button> &nbsp; <button class="btn btn-primary" @onclick="Next">Next</button>
 
@@ -31,6 +32,7 @@ else
                 <td class="sort-link" @onclick=@(() => SortTable("People"))>People</td>
 
                 <td class="sort-link" @onclick=@(() => SortTable("Category"))>Category</td>
+
 
                 <td class="sort-link" @onclick=@(() => SortTable("Date"))>Date</td>
 
@@ -61,11 +63,31 @@ else
 }
 
 @code {
-    string responseBody = "";
+
+
+        //public void SortDate()
+        //{
+        //    foreach (var storeapp in StoreApps)
+
+        //    {
+        //        String sourceDate = storeapp.Date;
+        //        DateTime dateNew = DateTime.Parse(storeapp.Date);
+        //        string formatted = dateNew.ToString("yyyy-MM-dd");
+        //        storeapp.Date = formatted;
+        //    }
+        //    StoreApps.Sort((x, y) => x.Date.CompareTo(y.Date));
+        //}
+
+
+
+
+    private string responseBody = "";
     private bool IsSortedAscending;
     private string CurrentSortColumn;
 
     List<StoreApp> StoreApps = new List<StoreApp>();
+
+
 
     protected override async Task OnInitializedAsync()
     {
@@ -95,8 +117,15 @@ else
         pageEnd -= pagerSize;
 
     }
+
+
     private void SortTable(string columnName)
     {
+
+
+
+
+
         //if (columnName != CurrentSortColumn)
         //{
         //    //We need to force order by descending on the new column
@@ -107,11 +136,28 @@ else
         //}
 
         if (IsSortedAscending)
+
         {
+
+            foreach (var storeapp in StoreApps)
+            {
+                String sourceDate = storeapp.Date;
+                DateTime dateNew = DateTime.Parse(storeapp.Date);
+                string formatted = dateNew.ToString("yyyy-MM-dd");
+                storeapp.Date = formatted;
+            }
+
             StoreApps = StoreApps.OrderByDescending(x => x.GetType().GetProperty(columnName).GetValue(x)).ToList();
         }
         else
         {
+            foreach (var storeapp in StoreApps)
+            {
+                String sourceDate = storeapp.Date;
+                DateTime dateNew = DateTime.Parse(storeapp.Date);
+                string formatted = dateNew.ToString("yyyy-MM-dd");
+                storeapp.Date = formatted;
+            }
             StoreApps = StoreApps.OrderBy(x => x.GetType().GetProperty(columnName).GetValue(x)).ToList();
         }
 

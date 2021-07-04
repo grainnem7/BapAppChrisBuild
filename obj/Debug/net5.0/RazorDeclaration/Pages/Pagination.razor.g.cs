@@ -112,13 +112,33 @@ using Data;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 63 "C:\Users\ruper\OneDrive\Desktop\bapteam01\BapBlazor\Pages\Pagination.razor"
+#line 65 "C:\Users\ruper\OneDrive\Desktop\bapteam01\BapBlazor\Pages\Pagination.razor"
        
-    string responseBody = "";
+
+
+        //public void SortDate()
+        //{
+        //    foreach (var storeapp in StoreApps)
+
+        //    {
+        //        String sourceDate = storeapp.Date;
+        //        DateTime dateNew = DateTime.Parse(storeapp.Date);
+        //        string formatted = dateNew.ToString("yyyy-MM-dd");
+        //        storeapp.Date = formatted;
+        //    }
+        //    StoreApps.Sort((x, y) => x.Date.CompareTo(y.Date));
+        //}
+
+
+
+
+    private string responseBody = "";
     private bool IsSortedAscending;
     private string CurrentSortColumn;
 
     List<StoreApp> StoreApps = new List<StoreApp>();
+
+
 
     protected override async Task OnInitializedAsync()
     {
@@ -148,8 +168,15 @@ using Data;
         pageEnd -= pagerSize;
 
     }
+
+
     private void SortTable(string columnName)
     {
+
+
+
+
+
         //if (columnName != CurrentSortColumn)
         //{
         //    //We need to force order by descending on the new column
@@ -160,11 +187,28 @@ using Data;
         //}
 
         if (IsSortedAscending)
+
         {
+
+            foreach (var storeapp in StoreApps)
+            {
+                String sourceDate = storeapp.Date;
+                DateTime dateNew = DateTime.Parse(storeapp.Date);
+                string formatted = dateNew.ToString("yyyy-MM-dd");
+                storeapp.Date = formatted;
+            }
+
             StoreApps = StoreApps.OrderByDescending(x => x.GetType().GetProperty(columnName).GetValue(x)).ToList();
         }
         else
         {
+            foreach (var storeapp in StoreApps)
+            {
+                String sourceDate = storeapp.Date;
+                DateTime dateNew = DateTime.Parse(storeapp.Date);
+                string formatted = dateNew.ToString("yyyy-MM-dd");
+                storeapp.Date = formatted;
+            }
             StoreApps = StoreApps.OrderBy(x => x.GetType().GetProperty(columnName).GetValue(x)).ToList();
         }
 
