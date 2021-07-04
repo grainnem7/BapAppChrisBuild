@@ -32,6 +32,7 @@ else
 
                 <td class="sort-link" @onclick=@(() => SortTable("Category"))>Category</td>
 
+
                 <td class="sort-link" @onclick=@(() => SortTable("Date"))>Date</td>
 
                 <td class="sort-link" @onclick=@(() => SortTable("Price"))>Price</td>
@@ -61,11 +62,16 @@ else
 }
 
 @code {
+
+  foreach (It)
+
     string responseBody = "";
     private bool IsSortedAscending;
     private string CurrentSortColumn;
 
     List<StoreApp> StoreApps = new List<StoreApp>();
+
+    
 
     protected override async Task OnInitializedAsync()
     {
@@ -95,6 +101,8 @@ else
         pageEnd -= pagerSize;
 
     }
+
+
     private void SortTable(string columnName)
     {
         //if (columnName != CurrentSortColumn)
