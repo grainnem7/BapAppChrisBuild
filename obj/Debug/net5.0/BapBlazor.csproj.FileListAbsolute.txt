@@ -171,7 +171,6 @@ C:\Users\kelvi\Desktop\bapteam01\BapBlazor\obj\Debug\net5.0\RazorDeclaration\Pag
 C:\Users\kelvi\Desktop\bapteam01\BapBlazor\obj\Debug\net5.0\RazorDeclaration\Pages\Index.razor.g.cs
 C:\Users\kelvi\Desktop\bapteam01\BapBlazor\obj\Debug\net5.0\RazorDeclaration\Pages\Pagination.razor.g.cs
 C:\Users\kelvi\Desktop\bapteam01\BapBlazor\obj\Debug\net5.0\RazorDeclaration\Pages\Search.razor.g.cs
-C:\Users\kelvi\Desktop\bapteam01\BapBlazor\obj\Debug\net5.0\RazorDeclaration\Pages\Sort.razor.g.cs
 C:\Users\kelvi\Desktop\bapteam01\BapBlazor\obj\Debug\net5.0\RazorDeclaration\Shared\SurveyPrompt.razor.g.cs
 C:\Users\kelvi\Desktop\bapteam01\BapBlazor\obj\Debug\net5.0\RazorDeclaration\_Imports.razor.g.cs
 C:\Users\kelvi\Desktop\bapteam01\BapBlazor\obj\Debug\net5.0\RazorDeclaration\Shared\MainLayout.razor.g.cs
@@ -190,7 +189,6 @@ C:\Users\kelvi\Desktop\bapteam01\BapBlazor\obj\Debug\net5.0\Razor\Pages\FetchSto
 C:\Users\kelvi\Desktop\bapteam01\BapBlazor\obj\Debug\net5.0\Razor\Pages\Index.razor.g.cs
 C:\Users\kelvi\Desktop\bapteam01\BapBlazor\obj\Debug\net5.0\Razor\Pages\Pagination.razor.g.cs
 C:\Users\kelvi\Desktop\bapteam01\BapBlazor\obj\Debug\net5.0\Razor\Pages\Search.razor.g.cs
-C:\Users\kelvi\Desktop\bapteam01\BapBlazor\obj\Debug\net5.0\Razor\Pages\Sort.razor.g.cs
 C:\Users\kelvi\Desktop\bapteam01\BapBlazor\obj\Debug\net5.0\Razor\Shared\SurveyPrompt.razor.g.cs
 C:\Users\kelvi\Desktop\bapteam01\BapBlazor\obj\Debug\net5.0\Razor\_Imports.razor.g.cs
 C:\Users\kelvi\Desktop\bapteam01\BapBlazor\obj\Debug\net5.0\Razor\Shared\MainLayout.razor.g.cs
@@ -374,3 +372,11 @@ C:\Users\grain\OneDrive\Desktop\BapTeam01\BapBlazor\bin\Debug\net5.0\Microsoft.E
 C:\Users\grain\OneDrive\Desktop\BapTeam01\BapBlazor\bin\Debug\net5.0\System.Diagnostics.DiagnosticSource.dll
 C:\Users\grain\OneDrive\Desktop\BapTeam01\BapBlazor\bin\Debug\net5.0\System.Net.Http.Formatting.dll
 C:\Users\grain\OneDrive\Desktop\BapTeam01\BapBlazor\bin\Debug\net5.0\Newtonsoft.Json.Bson.dll
+C:\Users\kelvi\Desktop\bapteam01\BapBlazor\bin\Debug\net5.0\System.Net.Http.Formatting.dll
+C:\Users\kelvi\Desktop\bapteam01\BapBlazor\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.dll
+C:\Users\kelvi\Desktop\bapteam01\BapBlazor\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+C:\Users\kelvi\Desktop\bapteam01\BapBlazor\bin\Debug\net5.0\Microsoft.Extensions.DependencyInjection.dll
+C:\Users\kelvi\Desktop\bapteam01\BapBlazor\bin\Debug\net5.0\Newtonsoft.Json.Bson.dll
+C:\Users\kelvi\Desktop\bapteam01\BapBlazor\bin\Debug\net5.0\System.Diagnostics.DiagnosticSource.dll
+C:\Users\kelvi\Desktop\bapteam01\BapBlazor\obj\Debug\net5.0\RazorDeclaration\Pages\ConsultantTeam.razor.g.cs
+C:\Users\kelvi\Desktop\bapteam01\BapBlazor\obj\Debug\net5.0\Razor\Pages\ConsultantTeam.razor.g.cs
