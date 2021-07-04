@@ -103,6 +103,13 @@ using Data;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 9 "C:\Users\ruper\OneDrive\Desktop\bapteam01\BapBlazor\Pages\Pagination.razor"
+using Microsoft.Extensions.Logging;
+
+#line default
+#line hidden
+#nullable disable
     [Microsoft.AspNetCore.Components.RouteAttribute("/pagination")]
     public partial class Pagination : Microsoft.AspNetCore.Components.ComponentBase
     {
@@ -112,24 +119,38 @@ using Data;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 65 "C:\Users\ruper\OneDrive\Desktop\bapteam01\BapBlazor\Pages\Pagination.razor"
+#line 76 "C:\Users\ruper\OneDrive\Desktop\bapteam01\BapBlazor\Pages\Pagination.razor"
        
 
 
-        //public void SortDate()
-        //{
-        //    foreach (var storeapp in StoreApps)
+    private SearchModel searchModel = new();
 
-        //    {
-        //        String sourceDate = storeapp.Date;
-        //        DateTime dateNew = DateTime.Parse(storeapp.Date);
-        //        string formatted = dateNew.ToString("yyyy-MM-dd");
-        //        storeapp.Date = formatted;
-        //    }
-        //    StoreApps.Sort((x, y) => x.Date.CompareTo(y.Date));
-        //}
+    private void SearchStore()
+    {
+        Logger.LogInformation("SearchStore called");
+        Logger.LogInformation(searchModel.Name);
+    }
 
+    public void EnterSearch()
+    {
+        GetSearch(searchModel.Name);
+    }
 
+    public async Task GetSearch(string search)
+    {
+        var apiName = "api/StoreApps/Search?searchTerm=" + search;
+
+        var httpResponse = await client.GetAsync(apiName);
+
+        if (httpResponse.IsSuccessStatusCode)
+        {
+            responseBody = await httpResponse.Content.ReadAsStringAsync();
+
+            StoreApps = JsonConvert.DeserializeObject<List<StoreApp>>(responseBody);
+
+            StateHasChanged();
+        }
+    }
 
 
     private string responseBody = "";
@@ -219,6 +240,7 @@ using Data;
 #line default
 #line hidden
 #nullable disable
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private ILogger<Search> Logger { get; set; }
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private HttpClient client { get; set; }
     }
 }

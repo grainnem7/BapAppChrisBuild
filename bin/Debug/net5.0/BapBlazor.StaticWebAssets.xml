@@ -1,5 +1,11 @@
 ﻿<StaticWebAssets Version="1.0">
+<<<<<<< HEAD
   <ContentRoot BasePath="/" Path="C:\Users\ruper\OneDrive\Desktop\bapteam01\BapBlazor\obj\Debug\net5.0\scopedcss\bundle\" />
   <ContentRoot BasePath="_content/Blazorise" Path="C:\Users\ruper\.nuget\packages\blazorise\0.9.3.9\build\..\staticwebassets\" />
   <ContentRoot BasePath="_content/Blazorise.Bootstrap" Path="C:\Users\ruper\.nuget\packages\blazorise.bootstrap\0.9.3.9\build\..\staticwebassets\" />
+=======
+  <ContentRoot BasePath="/" Path="C:\Users\grain\OneDrive\Desktop\BapTeam01\BapBlazor\obj\Debug\net5.0\scopedcss\bundle\" />
+  <ContentRoot BasePath="_content/Blazorise" Path="C:\Users\grain\.nuget\packages\blazorise\0.9.3.9\build\..\staticwebassets\" />
+  <ContentRoot BasePath="_content/Blazorise.Bootstrap" Path="C:\Users\grain\.nuget\packages\blazorise.bootstrap\0.9.3.9\build\..\staticwebassets\" />
+>>>>>>> 77f870408f917e7c16d574f5e6e5078c5afce6c6
 </StaticWebAssets>

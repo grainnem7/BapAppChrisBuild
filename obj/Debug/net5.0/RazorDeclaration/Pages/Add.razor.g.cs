@@ -126,7 +126,7 @@ using Microsoft.Extensions.Logging;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 43 "C:\Users\ruper\OneDrive\Desktop\bapteam01\BapBlazor\Pages\Add.razor"
+#line 44 "C:\Users\ruper\OneDrive\Desktop\bapteam01\BapBlazor\Pages\Add.razor"
  
     private StoreApp storeApp = new();
 
@@ -140,7 +140,7 @@ using Microsoft.Extensions.Logging;
 #line hidden
 #nullable disable
 #nullable restore
-#line 102 "C:\Users\ruper\OneDrive\Desktop\bapteam01\BapBlazor\Pages\Add.razor"
+#line 103 "C:\Users\ruper\OneDrive\Desktop\bapteam01\BapBlazor\Pages\Add.razor"
        
 
     string responseBody = "";

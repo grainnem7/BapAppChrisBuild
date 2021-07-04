@@ -97,7 +97,7 @@ using Blazorise;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 50 "C:\Users\ruper\OneDrive\Desktop\bapteam01\BapBlazor\Shared\NavMenu.razor"
+#line 45 "C:\Users\ruper\OneDrive\Desktop\bapteam01\BapBlazor\Shared\NavMenu.razor"
        
     private bool collapseNavMenu = true;
 
