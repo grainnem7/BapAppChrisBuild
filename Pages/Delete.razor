@@ -25,14 +25,10 @@
             <label> Category </label>
             <InputText class="form-control rounded" id="category" @bind-Value="storeApp.Category" />
         </p>
-
         <p>
             <label> Date </label>
             <InputText class="form-control rounded" id="date" @bind-Value="storeApp.Date" />
         </p>
-
-
-
         <button class="btn btn-outline-primary" type="button">Add</button>
     </EditForm>
 
@@ -50,8 +46,6 @@
                         <th>Category</th>
                         <th>Date</th>
                         <th>Price</th>
-
-
                     </tr>
                 </thead>
                 <tbody>
@@ -80,7 +74,6 @@
 
 </div>
 
-
 @*<InputNumber class="form-control rounded" id="name" @bind-Value="storeApp.Price" />*@
 
 @code
@@ -92,12 +85,6 @@
         Logger.LogInformation("SubmitApp called");
 
     }
-}
-
-
-
-
-@code {
 
     string responseBody = "";
     List<StoreApp>

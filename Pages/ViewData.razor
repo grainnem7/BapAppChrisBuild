@@ -11,8 +11,6 @@
 
 <h1>View Data </h1>
 
-
-
 <div class="row">
     <EditForm class="form-inline my-2" Model="@searchModel" OnValidSubmit="SearchStore">
         <InputText class="form-control rounded" id="name" @bind-Value="searchModel.Name" size="22" placeholder="Search all Apps & Categories" />
@@ -28,29 +26,22 @@
     <p><em>Loading...</em></p>
 }
 else
-
 {
     <table class="table">
         <thead>
             @*Creates links to sort data by clickable column names*@
             <tr>
                 <td class="sort-link" @onclick=@(() => SortTableById())>Id </td>
-
                 <td class="sort-link" @onclick=@(() => SortTableByName())>Name</td>
-
                 <td class="sort-link" @onclick=@(() => SortTableByRating())>Rating</td>
-
                 <td class="sort-link" @onclick=@(() => SortTableByPeople())>People</td>
-
                 <td class="sort-link" @onclick=@(() => SortTableByCategory())>Category</td>
-
                 <td class="sort-link" @onclick=@(() => SortTableByDate())>Date</td>
-
                 <td class="sort-link" @onclick=@(() => SortTableByPrice())>Price</td>
-
             </tr>
         </thead>
         <tbody>
+            @*Loop through apps and display data*@
             @foreach (var storeapp in StoreApps)
             {
                 if (StoreApps.IndexOf(storeapp) >= pageStart && StoreApps.IndexOf(storeapp) < pageEnd)
@@ -63,8 +54,6 @@ else
                         <td>@storeapp.Category</td>
                         <td>@storeapp.Date</td>
                         <td>@storeapp.Price</td>
-
-
                     </tr>
                 }
             }
@@ -105,14 +94,11 @@ else
         }
     }
 
-
     private string responseBody = "";
     private bool IsSortedAscending;
     private string CurrentSortColumn;
 
     List<StoreApp> StoreApps = new List<StoreApp>();
-
-
 
     protected override async Task OnInitializedAsync()
     {
@@ -141,7 +127,6 @@ else
     {
         pageStart -= pagerSize;
         pageEnd -= pagerSize;
-
     }
 
     /// <summary>
@@ -171,96 +156,72 @@ else
         {
             StoreApps.Sort((x, y) => y.Name.CompareTo(x.Name));
         }
-
     }
-
 
     public void SortTableByRating()
     {
-
         if (IsSortedAscending)
         {
             StoreApps.Sort((x, y) => x.Rating.CompareTo(y.Rating));
         }
-
         else
         {
             StoreApps.Sort((x, y) => y.Rating.CompareTo(x.Rating));
         }
-
     }
 
     public void SortTableByPeople()
     {
-
         if (IsSortedAscending)
         {
             StoreApps.Sort((x, y) => x.People.CompareTo(y.People));
         }
-
         else
         {
             StoreApps.Sort((x, y) => y.People.CompareTo(x.People));
         }
-
     }
-
-
 
     public void SortTableByCategory()
     {
-
         if (IsSortedAscending)
         {
             StoreApps.Sort((x, y) => x.Category.CompareTo(y.Category));
         }
-
         else
         {
             StoreApps.Sort((x, y) => y.Category.CompareTo(x.Category));
         }
-
     }
 
     public void SortTableByDate()
     {
         foreach (var storeapp in StoreApps)
         {
-
             string sourceDate = storeapp.Date;
             DateTime sourceDatenew = DateTime.Parse(storeapp.Date);
             string formatted = sourceDatenew.ToString("yyyy/MM/dd");
             storeapp.Date = formatted;
         }
-
         if (IsSortedAscending)
         {
-
             StoreApps.Sort((x, y) => x.Date.CompareTo(y.Date));
         }
-
         else
         {
-
-
             StoreApps.Sort((x, y) => y.Category.CompareTo(x.Category));
         }
-
     }
 
     public void SortTableByPrice()
     {
-
         if (IsSortedAscending)
         {
             StoreApps.Sort((x, y) => x.Price.CompareTo(y.Price));
         }
-
         else
         {
             StoreApps.Sort((x, y) => y.Price.CompareTo(x.Price));
         }
-
     }
-
 }

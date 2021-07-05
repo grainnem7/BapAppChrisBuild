@@ -6,7 +6,6 @@ public class SearchModel
     [StringLength(20, MinimumLength = 3, ErrorMessage = "Search term should be between {2} and {1} characters long.")]
     public string Name { get; set; }
 }
-
 public class AddModel
 {
     [Required]
