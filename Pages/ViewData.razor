@@ -21,7 +21,7 @@
 </div>
 
 <div class="row">
-<button class="btn btn-primary" @onclick="Previous">Previous</button> &nbsp; <button class="btn btn-primary" @onclick="Next">Next</button>
+    <button class="btn btn-primary" @onclick="Previous">Previous</button> &nbsp; <button class="btn btn-primary" @onclick="Next">Next</button>
 </div>
 @if (StoreApps == null)
 {
@@ -147,26 +147,26 @@ else
     private void SortTable(string columnName)
     {
 
-		foreach (var storeapp in StoreApps) 
-			{ 
-				string sourceDate = storeapp.Date;
-				DateTime sourceDatenew = DateTime.Parse(storeapp.Date);
-				string formatted = sourceDatenew.ToString("yyyy/MM/dd");
-				storeapp.Date = formatted;
+        foreach (var storeapp in StoreApps)
+        {
+            string sourceDate = storeapp.Date;
+            DateTime sourceDatenew = DateTime.Parse(storeapp.Date);
+            string formatted = sourceDatenew.ToString("yyyy/MM/dd");
+            storeapp.Date = formatted;
 
-			}
+        }
 
-			if (IsSortedAscending)
+        if (IsSortedAscending)
 
         {
 
-         
+
 
             StoreApps = StoreApps.OrderByDescending(x => x.GetType().GetProperty(columnName).GetValue(x)).ToList();
         }
         else
         {
-           
+
             StoreApps = StoreApps.OrderBy(x => x.GetType().GetProperty(columnName).GetValue(x)).ToList();
         }
 
