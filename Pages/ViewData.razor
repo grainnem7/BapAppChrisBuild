@@ -32,21 +32,21 @@ else
 {
     <table class="table">
         <thead>
+            @*Creates links to sort data by clickable column names*@
             <tr>
-                <td class="sort-link" @onclick=@(() => SortTable("Id"))>Id </td>
+                <td class="sort-link" @onclick=@(() => SortTableById())>Id </td>
 
-                <td class="sort-link" @onclick=@(() => SortTable("Name"))>Name</td>
+                <td class="sort-link" @onclick=@(() => SortTableByName())>Name</td>
 
-                <td class="sort-link" @onclick=@(() => SortTable("Rating"))>Rating</td>
+                <td class="sort-link" @onclick=@(() => SortTableByRating())>Rating</td>
 
-                <td class="sort-link" @onclick=@(() => SortTable("People"))>People</td>
+                <td class="sort-link" @onclick=@(() => SortTableByPeople())>People</td>
 
-                <td class="sort-link" @onclick=@(() => SortTable("Category"))>Category</td>
-
+                <td class="sort-link" @onclick=@(() => SortTableByCategory())>Category</td>
 
                 <td class="sort-link" @onclick=@(() => SortTableByDate())>Date</td>
 
-                <td class="sort-link" @onclick=@(() => SortTable("Price"))>Price</td>
+                <td class="sort-link" @onclick=@(() => SortTableByPrice())>Price</td>
 
             </tr>
         </thead>
@@ -130,12 +130,13 @@ else
     private int pageEnd = 25;
     private int pagerSize = 25;
 
+    //to move to next page
     private void Next()
     {
         pageStart += pagerSize;
         pageEnd += pagerSize;
     }
-
+    //to move to previous page
     private void Previous()
     {
         pageStart -= pagerSize;
@@ -143,52 +144,103 @@ else
 
     }
 
+    /// <summary>
+    /// Sorting methods use the isSortedAscending and if/else to determine whether to sort ascending or descending
+    /// </summary>
+    public void SortTableById()
+    {
+        if (IsSortedAscending)
+        {
+            StoreApps.Sort((x, y) => x.Id.CompareTo(y.Id));
+        }
+        else
+        {
+            StoreApps.Sort((x, y) => y.Id.CompareTo(x.Id));
+        }
+    }
 
-    private void SortTable(string columnName)
+    public void SortTableByName()
     {
 
         if (IsSortedAscending)
         {
-
-            StoreApps = StoreApps.OrderByDescending(x => x.GetType().GetProperty(columnName).GetValue(x)).ToList();
+            StoreApps.Sort((x, y) => x.Name.CompareTo(y.Name));
         }
+
         else
         {
-
-            StoreApps = StoreApps.OrderBy(x => x.GetType().GetProperty(columnName).GetValue(x)).ToList();
+            StoreApps.Sort((x, y) => y.Name.CompareTo(x.Name));
         }
-
-        IsSortedAscending = !IsSortedAscending;
 
     }
 
 
-    public void SortTableByDate()
+    public void SortTableByRating()
     {
 
         if (IsSortedAscending)
         {
-            foreach (var storeapp in StoreApps)
-            {
-                string sourceDate = storeapp.Date;
-                DateTime sourceDatenew = DateTime.Parse(storeapp.Date);
-                string formatted = sourceDatenew.ToString("yyyy/MM/dd");
-                storeapp.Date = formatted;
+            StoreApps.Sort((x, y) => x.Rating.CompareTo(y.Rating));
+        }
 
-            }
+        else
+        {
+            StoreApps.Sort((x, y) => y.Rating.CompareTo(x.Rating));
+        }
+
+    }
+
+    public void SortTableByPeople()
+    {
+
+        if (IsSortedAscending)
+        {
+            StoreApps.Sort((x, y) => x.People.CompareTo(y.People));
+        }
+
+        else
+        {
+            StoreApps.Sort((x, y) => y.People.CompareTo(x.People));
+        }
+
+    }
+
+
+
+    public void SortTableByCategory()
+    {
+
+        if (IsSortedAscending)
+        {
+            StoreApps.Sort((x, y) => x.Category.CompareTo(y.Category));
+        }
+
+        else
+        {
+            StoreApps.Sort((x, y) => y.Category.CompareTo(x.Category));
+        }
+
+    }
+
+    public void SortTableByDate()
+    {
+        foreach (var storeapp in StoreApps)
+        {
+
+            string sourceDate = storeapp.Date;
+            DateTime sourceDatenew = DateTime.Parse(storeapp.Date);
+            string formatted = sourceDatenew.ToString("yyyy/MM/dd");
+            storeapp.Date = formatted;
+        }
+
+        if (IsSortedAscending)
+        {
+
             StoreApps.Sort((x, y) => x.Date.CompareTo(y.Date));
         }
 
         else
         {
-            foreach (var storeapp in StoreApps)
-            {
-                string sourceDate = storeapp.Date;
-                DateTime sourceDatenew = DateTime.Parse(storeapp.Date);
-                string formatted = sourceDatenew.ToString("yyyy/MM/dd");
-                storeapp.Date = formatted;
-
-            }
 
 
             StoreApps.Sort((x, y) => y.Category.CompareTo(x.Category));
@@ -196,5 +248,19 @@ else
 
     }
 
+    public void SortTableByPrice()
+    {
+
+        if (IsSortedAscending)
+        {
+            StoreApps.Sort((x, y) => x.Price.CompareTo(y.Price));
+        }
+
+        else
+        {
+            StoreApps.Sort((x, y) => y.Price.CompareTo(x.Price));
+        }
+
+    }
 
 }
