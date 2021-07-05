@@ -71,3 +71,11 @@ a, .btn-link {
     color: blue;
     text-decoration: underline;
 }
+
+.imgvis {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 50px;
+    width: 50%;
+}
