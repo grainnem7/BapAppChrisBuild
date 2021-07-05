@@ -76,219 +76,227 @@ else
 @code {
 
 
-    private SearchModel searchModel = new();
+            private SearchModel searchModel = new();
 
-    private void SearchStore()
-    {
-        Logger.LogInformation("SearchStore called");
-        Logger.LogInformation(searchModel.Name);
-    }
-
-    public void EnterSearch()
-    {
-        GetSearch(searchModel.Name);
-    }
-
-    public async Task GetSearch(string search)
-    {
-        var apiName = "api/StoreApps/Search?searchTerm=" + search;
-
-        var httpResponse = await client.GetAsync(apiName);
-
-        if (httpResponse.IsSuccessStatusCode)
-        {
-            responseBody = await httpResponse.Content.ReadAsStringAsync();
-
-            StoreApps = JsonConvert.DeserializeObject<List<StoreApp>>(responseBody);
-
-            StateHasChanged();
-        }
-    }
-
-
-    private string responseBody = "";
-    private bool IsSortedAscending;
-    private string CurrentSortColumn;
-
-    List<StoreApp> StoreApps = new List<StoreApp>();
-
-
-
-    protected override async Task OnInitializedAsync()
-    {
-        var apiName = "api/StoreApps";
-        var httpResponse = await client.GetAsync(apiName);
-
-        if (httpResponse.IsSuccessStatusCode)
-        {
-            responseBody = await httpResponse.Content.ReadAsStringAsync();
-            StoreApps = JsonConvert.DeserializeObject<List<StoreApp>>(responseBody);
-            StateHasChanged();
-        }
-    }
-    private int pageStart = 0;
-    private int pageEnd = 25;
-    private int pagerSize = 25;
-
-    private void Next()
-    {
-        pageStart += pagerSize;
-        pageEnd += pagerSize;
-    }
-
-    private void Previous()
-    {
-        pageStart -= pagerSize;
-        pageEnd -= pagerSize;
-
-    }
-
-
-    //private void SortTable(string columnName)
-    //{
-
-    //    if (IsSortedAscending)
-
-    //    {
-
-    //        foreach (var storeapp in StoreApps)
-    //        {
-    //            String sourceDate = storeapp.Date;
-    //            DateTime dateNew = DateTime.Parse(storeapp.Date);
-    //            string formatted = dateNew.ToString("yyyy/MM/dd");
-    //            storeapp.Date = formatted;
-    //        }
-
-    //        StoreApps = StoreApps.OrderByDescending(x => x.GetType().GetProperty(columnName).GetValue(x)).ToList();
-    //    }
-    //    else
-    //    {
-    //        foreach (var storeapp in StoreApps)
-    //        {
-    //            String sourceDate = storeapp.Date;
-    //            DateTime dateNew = DateTime.Parse(storeapp.Date);
-    //            string formatted = dateNew.ToString("yyyy/MM/dd");
-    //            storeapp.Date = formatted;
-    //        }
-    //        StoreApps = StoreApps.OrderBy(x => x.GetType().GetProperty(columnName).GetValue(x)).ToList();
-    //    }
-
-    //    IsSortedAscending = !IsSortedAscending;
-
-    //}
-
-    public void SortTableById()
-    {
-        if (IsSortedAscending)
-        {
-            StoreApps.Sort((x, y) => x.Id.CompareTo(y.Id));
-        }
-        else
-        {
-            StoreApps.Sort((x, y) => y.Id.CompareTo(x.Id));
-        }
-        IsSortedAscending = !IsSortedAscending;
-
-    }
-
-    public void SortTableByNameAsc()
-    {
-
-        if (IsSortedAscending)
-        {
-            StoreApps.Sort((x, y) => x.Name.CompareTo(y.Name));
-        }
-
-        else
-        {
-            StoreApps.Sort((x, y) => y.Name.CompareTo(x.Name));
-        }
-        IsSortedAscending = !IsSortedAscending;
-
-    }
-
-
-    public void SortTableByRatingAsc()
-    {
-
-        if (IsSortedAscending)
-        {
-            StoreApps.Sort((x, y) => x.Rating.CompareTo(y.Rating));
-        }
-
-        else
-        {
-            StoreApps.Sort((x, y) => y.Rating.CompareTo(x.Rating));
-        }
-        IsSortedAscending = !IsSortedAscending;
-
-    }
-
-    public void SortTableByPeopleAsc()
-    {
-
-        if (IsSortedAscending)
-        {
-            StoreApps.Sort((x, y) => x.People.CompareTo(y.People));
-        }
-
-        else
-        {
-            StoreApps.Sort((x, y) => y.People.CompareTo(x.People));
-        }
-        IsSortedAscending = !IsSortedAscending;
-
-    }
-
-
-
-    public void SortTableByCategoryAsc()
-    {
-
-        if (IsSortedAscending)
-        {
-            StoreApps.Sort((x, y) => x.Category.CompareTo(y.Category));
-        }
-
-        else
-        {
-            StoreApps.Sort((x, y) => y.Category.CompareTo(x.Category));
-        }
-        IsSortedAscending = !IsSortedAscending;
-
-    }
-
-    public void SortTableByDateAsc()
-    {
-
-        if (IsSortedAscending)
-        {
-            foreach (var storeapp in StoreApps)
+            private void SearchStore()
             {
-                string sourceDate = storeapp.Date;
-                DateTime sourceDatenew = DateTime.Parse(storeapp.Date);
-                string formatted = sourceDatenew.ToString("yyyy/MM/dd");
-                storeapp.Date = formatted;
-
+                Logger.LogInformation("SearchStore called");
+                Logger.LogInformation(searchModel.Name);
             }
-            StoreApps.Sort((x, y) => x.Date.CompareTo(y.Date));
-        }
 
-        else
-        {
-            foreach (var storeapp in StoreApps)
+            public void EnterSearch()
             {
-                string sourceDate = storeapp.Date;
-                DateTime sourceDatenew = DateTime.Parse(storeapp.Date);
-                string formatted = sourceDatenew.ToString("yyyy/MM/dd");
-                storeapp.Date = formatted;
+                GetSearch(searchModel.Name);
+            }
+
+            public async Task GetSearch(string search)
+            {
+                var apiName = "api/StoreApps/Search?searchTerm=" + search;
+
+                var httpResponse = await client.GetAsync(apiName);
+
+                if (httpResponse.IsSuccessStatusCode)
+                {
+                    responseBody = await httpResponse.Content.ReadAsStringAsync();
+
+                    StoreApps = JsonConvert.DeserializeObject<List<StoreApp>>(responseBody);
+
+                    StateHasChanged();
+                }
+            }
+
+
+            private string responseBody = "";
+            private bool IsSortedAscending;
+            private string CurrentSortColumn;
+
+            List<StoreApp> StoreApps = new List<StoreApp>();
+
+
+
+            protected override async Task OnInitializedAsync()
+            {
+                var apiName = "api/StoreApps";
+                var httpResponse = await client.GetAsync(apiName);
+
+                if (httpResponse.IsSuccessStatusCode)
+                {
+                    responseBody = await httpResponse.Content.ReadAsStringAsync();
+                    StoreApps = JsonConvert.DeserializeObject<List<StoreApp>>(responseBody);
+                    StateHasChanged();
+                }
+            }
+            private int pageStart = 0;
+            private int pageEnd = 25;
+            private int pagerSize = 25;
+
+            private void Next()
+            {
+                pageStart += pagerSize;
+                pageEnd += pagerSize;
+            }
+
+            private void Previous()
+            {
+                pageStart -= pagerSize;
+                pageEnd -= pagerSize;
 
             }
 
 
-            StoreApps.Sort((x, y) => y.Category.CompareTo(x.Category));
+            //private void SortTable(string columnName)
+            //{
+
+            //    if (IsSortedAscending)
+
+            //    {
+
+            //        foreach (var storeapp in StoreApps)
+            //        {
+            //            String sourceDate = storeapp.Date;
+            //            DateTime dateNew = DateTime.Parse(storeapp.Date);
+            //            string formatted = dateNew.ToString("yyyy/MM/dd");
+            //            storeapp.Date = formatted;
+            //        }
+
+            //        StoreApps = StoreApps.OrderByDescending(x => x.GetType().GetProperty(columnName).GetValue(x)).ToList();
+            //    }
+            //    else
+            //    {
+            //        foreach (var storeapp in StoreApps)
+            //        {
+            //            String sourceDate = storeapp.Date;
+            //            DateTime dateNew = DateTime.Parse(storeapp.Date);
+            //            string formatted = dateNew.ToString("yyyy/MM/dd");
+            //            storeapp.Date = formatted;
+            //        }
+            //        StoreApps = StoreApps.OrderBy(x => x.GetType().GetProperty(columnName).GetValue(x)).ToList();
+            //    }
+
+            //    IsSortedAscending = !IsSortedAscending;
+
+            //}
+
+
+            public void SortTable()
+            {
+
+                foreach (var storeapp in StoreApps)
+                {
+                    String sourceDate = storeapp.Date;
+                    DateTime dateNew = DateTime.Parse(storeapp.Date);
+                    string formatted = dateNew.ToString("yyyy/MM/dd");
+                    storeapp.Date = formatted;
+                }
+
+            }
+
+            public void SortTableById()
+            {
+                if (IsSortedAscending)
+                {
+                    StoreApps.Sort((x, y) => x.Id.CompareTo(y.Id));
+                }
+                else
+                {
+                    StoreApps.Sort((x, y) => y.Id.CompareTo(x.Id));
+                }
+                IsSortedAscending = !IsSortedAscending;
+
+            }
+
+            public void SortTableByNameAsc()
+            {
+
+                if (IsSortedAscending)
+                {
+                    StoreApps.Sort((x, y) => x.Name.CompareTo(y.Name));
+                }
+
+                else
+                {
+                    StoreApps.Sort((x, y) => y.Name.CompareTo(x.Name));
+                }
+                IsSortedAscending = !IsSortedAscending;
+
+            }
+
+
+            public void SortTableByRatingAsc()
+            {
+
+                if (IsSortedAscending)
+                {
+                    StoreApps.Sort((x, y) => x.Rating.CompareTo(y.Rating));
+                }
+
+                else
+                {
+                    StoreApps.Sort((x, y) => y.Rating.CompareTo(x.Rating));
+                }
+                IsSortedAscending = !IsSortedAscending;
+
+            }
+
+            public void SortTableByPeopleAsc()
+            {
+
+                if (IsSortedAscending)
+                {
+                    StoreApps.Sort((x, y) => x.People.CompareTo(y.People));
+                }
+
+                else
+                {
+                    StoreApps.Sort((x, y) => y.People.CompareTo(x.People));
+                }
+                IsSortedAscending = !IsSortedAscending;
+
+            }
+
+
+
+            public void SortTableByCategoryAsc()
+            {
+
+                if (IsSortedAscending)
+                {
+                    StoreApps.Sort((x, y) => x.Category.CompareTo(y.Category));
+                }
+
+                else
+                {
+                    StoreApps.Sort((x, y) => y.Category.CompareTo(x.Category));
+                }
+                IsSortedAscending = !IsSortedAscending;
+
+            }
+
+            public void SortTableByDateAsc()
+            {
+
+                foreach (var storeapp in StoreApps) { 
+                    string sourceDate = storeapp.Date;
+                DateTime sourceDatenew = DateTime.Parse(storeapp.Date);
+                string formatted = sourceDatenew.ToString("yyyy/MM/dd");
+                storeapp.Date = formatted;
+
+                 }
+
+                     if (IsSortedAscending)
+        {
+            
+        StoreApps.Sort((x, y) => x.Date.CompareTo(y.Date));
         }
-        IsSortedAscending = !IsSortedAscending;
+
+        else
+    {
+   
+
+
+        StoreApps.Sort((x, y) => y.Category.CompareTo(x.Category));
+    }
+    IsSortedAscending = !IsSortedAscending;
 
 
     }
