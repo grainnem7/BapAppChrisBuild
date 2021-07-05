@@ -160,8 +160,6 @@ else
 
         {
 
-
-
             StoreApps = StoreApps.OrderByDescending(x => x.GetType().GetProperty(columnName).GetValue(x)).ToList();
         }
         else

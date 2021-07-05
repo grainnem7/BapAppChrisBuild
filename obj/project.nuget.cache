@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "yu5bLIFpMxF4Y/9oZuvxaFzf5wL/eGxCaBx57ZxNYD+kOjHsisJHtrPvlNYsu30hmb/wcTn+N1T0oG8bxrR+qw==",
+  "dgSpecHash": "dtisCyaSaP1ci/4IT9eNZ0V5G9ljTOPamiYkG9t45MWbpxzmja2fvYmUcCEaHPhCp2qNtv+TCkRaccs6Kc9o2g==",
   "success": true,
-  "projectFilePath": "C:\\Users\\grain\\OneDrive\\Desktop\\BapTry2\\BapBlazor.csproj",
+  "projectFilePath": "C:\\Users\\grain\\OneDrive\\Desktop\\BapTeam01\\BapBlazor\\BapBlazor.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\grain\\.nuget\\packages\\blazorise\\0.9.3.9\\blazorise.0.9.3.9.nupkg.sha512",
     "C:\\Users\\grain\\.nuget\\packages\\blazorise.bootstrap\\0.9.3.9\\blazorise.bootstrap.0.9.3.9.nupkg.sha512",
