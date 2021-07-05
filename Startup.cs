@@ -33,8 +33,8 @@ namespace BapBlazor
             
             services.AddScoped<HttpClient>(s =>
             {
-                // return new HttpClient { BaseAddress = new Uri(@"https://bapapisqlite.azurewebsites.net/") };
-                return new HttpClient { BaseAddress = new Uri(@"http://localhost:5002/") };
+                return new HttpClient { BaseAddress = new Uri(@"https://bapteam01api.azurewebsites.net") };
+               // return new HttpClient { BaseAddress = new Uri(@"http://localhost:5002/") };
             });
         }
 

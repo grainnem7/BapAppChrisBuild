@@ -119,7 +119,7 @@ using Microsoft.Extensions.Logging;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 44 "C:\Users\grain\OneDrive\Desktop\BapTeam01\BapBlazor\Pages\Delete.razor"
+#line 87 "C:\Users\grain\OneDrive\Desktop\BapTeam01\BapBlazor\Pages\Delete.razor"
      
     private StoreApp storeApp = new();
 
@@ -133,7 +133,7 @@ using Microsoft.Extensions.Logging;
 #line hidden
 #nullable disable
 #nullable restore
-#line 106 "C:\Users\grain\OneDrive\Desktop\BapTeam01\BapBlazor\Pages\Delete.razor"
+#line 100 "C:\Users\grain\OneDrive\Desktop\BapTeam01\BapBlazor\Pages\Delete.razor"
        
 
     string responseBody = "";
@@ -143,7 +143,7 @@ using Microsoft.Extensions.Logging;
 
     protected override async Task OnInitializedAsync()
     {
-        var apiName = "api/StoreApps/Create";
+        var apiName = "api/StoreApps/";
         var httpResponse = await client.GetAsync(apiName);
 
         if (httpResponse.IsSuccessStatusCode)

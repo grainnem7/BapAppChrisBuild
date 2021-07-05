@@ -15,6 +15,7 @@
 <p>Add new App to the database </p>
 <div class="container-fluid">
 
+
     <EditForm class="form-inline my-2" Model="@storeApp" OnValidSubmit="SubmitApp">
         <p>
             <label> Name of App </label>
@@ -35,28 +36,6 @@
         <button class="btn btn-outline-primary" type="button">Add</button>
     </EditForm>
 
-</div>
-
-
-@*<InputNumber class="form-control rounded" id="name" @bind-Value="storeApp.Price" />*@
-
-@code
-    {
-    private StoreApp storeApp = new();
-
-    private void SubmitApp()
-    {
-        Logger.LogInformation("SubmitApp called");
-
-    }
-}
-
-
-<div class="container-fluid">
-
-    <div class="row justify-content-center" style="margin-bottom:50px">
-
-    </div>
 
     <div class="row" style="margin:25px;">
         @if (StoreApps != null)
@@ -75,13 +54,12 @@
 
                     </tr>
                 </thead>
-
                 <tbody>
                     @foreach (var storeapp in StoreApps)
                     {
                         <tr class="justify-content-center">
-                            <td><p id="p1" /> </td>
-                            <td>storeapp.Name</td>
+                            <td>@storeapp.Id</td>
+                            <td>@storeapp.Name</td>
                             <td>@storeapp.Rating</td>
                             <td>@storeapp.People</td>
                             <td>@storeapp.Category</td>
@@ -103,6 +81,22 @@
 </div>
 
 
+@*<InputNumber class="form-control rounded" id="name" @bind-Value="storeApp.Price" />*@
+
+@code
+    {
+    private StoreApp storeApp = new();
+
+    private void SubmitApp()
+    {
+        Logger.LogInformation("SubmitApp called");
+
+    }
+}
+
+
+
+
 @code {
 
     string responseBody = "";
@@ -112,7 +106,7 @@
 
     protected override async Task OnInitializedAsync()
     {
-        var apiName = "api/StoreApps/Create";
+        var apiName = "api/StoreApps/";
         var httpResponse = await client.GetAsync(apiName);
 
         if (httpResponse.IsSuccessStatusCode)
