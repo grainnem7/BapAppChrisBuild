@@ -128,8 +128,8 @@ else
         }
     }
     private int pageStart = 0;
-    private int pageEnd = 10;
-    private int pagerSize = 10;
+    private int pageEnd = 25;
+    private int pagerSize = 25;
 
     private void Next()
     {
@@ -169,7 +169,7 @@ else
             {
                 String sourceDate = storeapp.Date;
                 DateTime dateNew = DateTime.Parse(storeapp.Date);
-                string formatted = dateNew.ToString("yyyy-MM-dd");
+                string formatted = dateNew.ToString("yyyy/MM/dd");
                 storeapp.Date = formatted;
             }
 
@@ -181,7 +181,7 @@ else
             {
                 String sourceDate = storeapp.Date;
                 DateTime dateNew = DateTime.Parse(storeapp.Date);
-                string formatted = dateNew.ToString("yyyy-MM-dd");
+                string formatted = dateNew.ToString("yyyy/MM/dd");
                 storeapp.Date = formatted;
             }
             StoreApps = StoreApps.OrderBy(x => x.GetType().GetProperty(columnName).GetValue(x)).ToList();
