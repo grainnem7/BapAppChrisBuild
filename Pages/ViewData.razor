@@ -14,16 +14,16 @@
 <p>Click to sort data according to column </p>
 
 
-<div class="container-fluid">
+<div class="row">
     <EditForm class="form-inline my-2" Model="@searchModel" OnValidSubmit="SearchStore">
-        <InputText class="form-control rounded" id="name" @bind-Value="searchModel.Name" placeholder="Search all Apps & Categories" />
+        <InputText class="form-control rounded" id="name" @bind-Value="searchModel.Name" size="22" placeholder="Search all Apps & Categories" />
         <button class="btn btn-outline-primary" type="button" @onclick="EnterSearch">Search</button>
     </EditForm>
 </div>
 
-
+<div class="row">
 <button class="btn btn-primary" @onclick="Previous">Previous</button> &nbsp; <button class="btn btn-primary" @onclick="Next">Next</button>
-
+</div>
 @if (StoreApps == null)
 {
     <p><em>Loading...</em></p>
