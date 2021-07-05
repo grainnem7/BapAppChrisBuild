@@ -44,7 +44,7 @@ else
                 <td class="sort-link" @onclick=@(() => SortTable("Category"))>Category</td>
 
 
-                <td class="sort-link" @onclick=@(() => SortTable("Date"))>Date</td>
+                <td class="sort-link" @onclick=@(() => SortTableByDate())>Date</td>
 
                 <td class="sort-link" @onclick=@(() => SortTable("Price"))>Price</td>
 
@@ -147,17 +147,7 @@ else
     private void SortTable(string columnName)
     {
 
-        foreach (var storeapp in StoreApps)
-        {
-            string sourceDate = storeapp.Date;
-            DateTime sourceDatenew = DateTime.Parse(storeapp.Date);
-            string formatted = sourceDatenew.ToString("yyyy/MM/dd");
-            storeapp.Date = formatted;
-
-        }
-
         if (IsSortedAscending)
-
         {
 
             StoreApps = StoreApps.OrderByDescending(x => x.GetType().GetProperty(columnName).GetValue(x)).ToList();
@@ -171,4 +161,40 @@ else
         IsSortedAscending = !IsSortedAscending;
 
     }
+
+
+    public void SortTableByDate()
+    {
+
+        if (IsSortedAscending)
+        {
+            foreach (var storeapp in StoreApps)
+            {
+                string sourceDate = storeapp.Date;
+                DateTime sourceDatenew = DateTime.Parse(storeapp.Date);
+                string formatted = sourceDatenew.ToString("yyyy/MM/dd");
+                storeapp.Date = formatted;
+
+            }
+            StoreApps.Sort((x, y) => x.Date.CompareTo(y.Date));
+        }
+
+        else
+        {
+            foreach (var storeapp in StoreApps)
+            {
+                string sourceDate = storeapp.Date;
+                DateTime sourceDatenew = DateTime.Parse(storeapp.Date);
+                string formatted = sourceDatenew.ToString("yyyy/MM/dd");
+                storeapp.Date = formatted;
+
+            }
+
+
+            StoreApps.Sort((x, y) => y.Category.CompareTo(x.Category));
+        }
+
+    }
+
+
 }
