@@ -13,7 +13,7 @@
 <h1>Add App </h1>
 
 <p>Add new App to the database </p>
-<div class="container-fluid">
+
 
 
     <EditForm class="form-inline my-2" Model="@storeApp" OnValidSubmit="SubmitApp">
@@ -37,7 +37,7 @@
         @if (StoreApps != null)
         {
             <table class="table">
-                <thead class="thead-dark">
+                <thead>
                     <tr>
                         <th>Id</th>
                         <th>Name</th>
@@ -72,7 +72,7 @@
         }
     </div>
 
-</div>
+
 
 @*<InputNumber class="form-control rounded" id="name" @bind-Value="storeApp.Price" />*@
 
