@@ -119,13 +119,13 @@ else
     //to move to next page
     private void Next()
     {
-     
 
-            pageStart += pagerSize;
-            pageEnd += pagerSize;
-    
+
+        pageStart += pagerSize;
+        pageEnd += pagerSize;
+
     }
-    
+
 
     private void Previous()
     {
@@ -149,6 +149,8 @@ else
         {
             StoreApps.Sort((x, y) => y.Id.CompareTo(x.Id));
         }
+
+        IsSortedAscending = !IsSortedAscending;
     }
 
     public void SortTableByName()
@@ -163,6 +165,8 @@ else
         {
             StoreApps.Sort((x, y) => y.Name.CompareTo(x.Name));
         }
+
+        IsSortedAscending = !IsSortedAscending;
     }
 
     public void SortTableByRating()
@@ -175,6 +179,8 @@ else
         {
             StoreApps.Sort((x, y) => y.Rating.CompareTo(x.Rating));
         }
+
+        IsSortedAscending = !IsSortedAscending;
     }
 
     public void SortTableByPeople()
@@ -187,6 +193,8 @@ else
         {
             StoreApps.Sort((x, y) => y.People.CompareTo(x.People));
         }
+
+        IsSortedAscending = !IsSortedAscending;
     }
 
     public void SortTableByCategory()
@@ -199,6 +207,8 @@ else
         {
             StoreApps.Sort((x, y) => y.Category.CompareTo(x.Category));
         }
+
+        IsSortedAscending = !IsSortedAscending;
     }
 
     public void SortTableByDate()
@@ -218,6 +228,8 @@ else
         {
             StoreApps.Sort((x, y) => y.Category.CompareTo(x.Category));
         }
+
+        IsSortedAscending = !IsSortedAscending;
     }
 
     public void SortTableByPrice()
@@ -230,5 +242,7 @@ else
         {
             StoreApps.Sort((x, y) => y.Price.CompareTo(x.Price));
         }
+
+        IsSortedAscending = !IsSortedAscending;
     }
 }

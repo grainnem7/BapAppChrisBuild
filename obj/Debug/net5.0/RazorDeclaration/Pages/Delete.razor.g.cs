@@ -119,7 +119,7 @@ using Microsoft.Extensions.Logging;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 80 "C:\Users\grain\OneDrive\Desktop\BapTeam01\BapBlazor\Pages\Delete.razor"
+#line 77 "C:\Users\grain\OneDrive\Desktop\BapTeam01\BapBlazor\Pages\Delete.razor"
      
     private StoreApp storeApp = new();
 
