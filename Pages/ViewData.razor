@@ -119,14 +119,20 @@ else
     //to move to next page
     private void Next()
     {
-        pageStart += pagerSize;
-        pageEnd += pagerSize;
+     //   if (pageStart <= 0) {
+
+            pageStart += pagerSize;
+            pageEnd += pagerSize;
+     //   }
     }
     //to move to previous page
     private void Previous()
     {
-        pageStart -= pagerSize;
-        pageEnd -= pagerSize;
+        if (pageStart >= 0)
+        {
+            pageStart -= pagerSize;
+            pageEnd -= pagerSize;
+        }
     }
 
     /// <summary>

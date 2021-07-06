@@ -119,7 +119,7 @@ using Microsoft.Extensions.Logging;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 72 "C:\Users\grain\OneDrive\Desktop\BapTeam01\BapBlazor\Pages\Search.razor"
+#line 63 "C:\Users\grain\OneDrive\Desktop\BapTeam01\BapBlazor\Pages\Search.razor"
        
     private SearchModel searchModel = new();
 
