@@ -72,7 +72,7 @@
 
 
 
-    @*<InputNumber class="form-control rounded" id="name" @bind-Value="storeApp.Price" />*@
+
 
     @code
     {
@@ -91,7 +91,7 @@
 
         protected override async Task OnInitializedAsync()
         {
-            var apiName = "api/StoreApps/";
+            var apiName = "api/StoreApps/CreateApp";
             var httpResponse = await client.GetAsync(apiName);
 
             if (httpResponse.IsSuccessStatusCode)
