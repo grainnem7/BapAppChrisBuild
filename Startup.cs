@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using BapBlazor.Data;
+//using BapBlazor.Data;
 
 namespace BapBlazor
 {
@@ -27,7 +27,7 @@ namespace BapBlazor
         {
             services.AddRazorPages();
             services.AddServerSideBlazor();
-            services.AddSingleton<WeatherForecastService>();
+            //services.AddSingleton<WeatherForecastService>();
 
             services.AddScoped<HttpClient>(s =>
             {
