@@ -73,9 +73,9 @@ else
         Logger.LogInformation(searchModel.Name);
     }
 
-    public void EnterSearch()
+    public async Task EnterSearch()
     {
-        GetSearch(searchModel.Name);
+       await GetSearch(searchModel.Name);
     }
 
     public async Task GetSearch(string search)
