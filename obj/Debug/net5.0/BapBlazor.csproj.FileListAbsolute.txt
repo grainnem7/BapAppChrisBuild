@@ -260,7 +260,6 @@ C:\Users\grain\OneDrive\Desktop\BapTeam01\BapBlazor\obj\Debug\net5.0\Razor\Share
 C:\Users\grain\OneDrive\Desktop\BapTeam01\BapBlazor\obj\Debug\net5.0\Razor\_Imports.razor.g.cs
 C:\Users\grain\OneDrive\Desktop\BapTeam01\BapBlazor\obj\Debug\net5.0\Razor\Shared\MainLayout.razor.g.cs
 C:\Users\grain\OneDrive\Desktop\BapTeam01\BapBlazor\obj\Debug\net5.0\Razor\Shared\NavMenu.razor.g.cs
-C:\Users\grain\OneDrive\Desktop\BapTeam01\BapBlazor\obj\Debug\net5.0\Razor\Pages\Error.cshtml.g.cs
 C:\Users\grain\OneDrive\Desktop\BapTeam01\BapBlazor\obj\Debug\net5.0\Razor\Pages\_Host.cshtml.g.cs
 C:\Users\grain\OneDrive\Desktop\BapTeam01\BapBlazor\obj\Debug\net5.0\BapBlazor.RazorAssemblyInfo.cache
 C:\Users\grain\OneDrive\Desktop\BapTeam01\BapBlazor\obj\Debug\net5.0\BapBlazor.RazorAssemblyInfo.cs
