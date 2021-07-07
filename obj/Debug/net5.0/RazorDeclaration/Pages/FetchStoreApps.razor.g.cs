@@ -13,6 +13,13 @@ namespace BapBlazor.Pages
     using System.Threading.Tasks;
     using Microsoft.AspNetCore.Components;
 #nullable restore
+#line 1 "C:\Users\grain\OneDrive\Desktop\BapTeam01\BapBlazor\_Imports.razor"
+using System.Net.Http;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
 #line 2 "C:\Users\grain\OneDrive\Desktop\BapTeam01\BapBlazor\_Imports.razor"
 using Microsoft.AspNetCore.Authorization;
 
@@ -82,21 +89,6 @@ using Blazorise;
 #line default
 #line hidden
 #nullable disable
-#nullable restore
-#line 3 "C:\Users\grain\OneDrive\Desktop\BapTeam01\BapBlazor\Pages\FetchStoreApps.razor"
-using System.Net.Http;
-
-#line default
-#line hidden
-#nullable disable
-#nullable restore
-#line 7 "C:\Users\grain\OneDrive\Desktop\BapTeam01\BapBlazor\Pages\FetchStoreApps.razor"
-using Newtonsoft.Json;
-
-#line default
-#line hidden
-#nullable disable
-    [Microsoft.AspNetCore.Components.RouteAttribute("/fetchstoreapps")]
     public partial class FetchStoreApps : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998
@@ -104,31 +96,6 @@ using Newtonsoft.Json;
         {
         }
         #pragma warning restore 1998
-#nullable restore
-#line 57 "C:\Users\grain\OneDrive\Desktop\BapTeam01\BapBlazor\Pages\FetchStoreApps.razor"
-       
-
-    string responseBody = "";
-    List<StoreApp> StoreApps = new List<StoreApp>();
-
-    protected override async Task OnInitializedAsync()
-    {
-        var apiName = "api/StoreApps/FirstTen";
-        var httpResponse = await client.GetAsync(apiName);
-
-        if (httpResponse.IsSuccessStatusCode)
-        {
-            responseBody = await httpResponse.Content.ReadAsStringAsync();
-            StoreApps = JsonConvert.DeserializeObject<List<StoreApp>>(responseBody);
-            StateHasChanged();
-        }
-
-    }
-
-#line default
-#line hidden
-#nullable disable
-        [global::Microsoft.AspNetCore.Components.InjectAttribute] private HttpClient client { get; set; }
     }
 }
 #pragma warning restore 1591

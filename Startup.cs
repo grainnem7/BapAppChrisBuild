@@ -27,7 +27,7 @@ namespace BapBlazor
         {
             services.AddRazorPages();
             services.AddServerSideBlazor();
-            //services.AddSingleton<WeatherForecastService>();
+           
 
             services.AddScoped<HttpClient>(s =>
             {
