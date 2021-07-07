@@ -11,9 +11,10 @@
 
 <h1>View Data </h1>
 
+@*creates a search bar, and binds the search term with the search model when enter search is called when the search button is clicked*@
 <div class="row">
     <EditForm class="form-inline my-2" Model="@searchModel" OnValidSubmit="SearchStore">
-        <InputText class="form-control rounded" id="name" @bind-Value="searchModel.Name" size="22" placeholder="Search all Apps & Categories" />
+        <InputText class="form-control rounded" id="name" @bind-Value="searchModel.SearchTerm" size="22" placeholder="Search all Apps & Categories" />
         <button class="btn btn-outline-primary" type="button" @onclick="EnterSearch">Search</button>
     </EditForm>
 </div>
@@ -64,32 +65,35 @@ else
 
 @code {
 
-
+    // creates new instance of the search model
     private SearchModel searchModel = new();
 
+    //Logging Entries to Searchbox
     private void SearchStore()
     {
         Logger.LogInformation("SearchStore called");
-        Logger.LogInformation(searchModel.Name);
+        Logger.LogInformation(searchModel.SearchTerm);
     }
-
+    // 
     public async Task EnterSearch()
     {
-       await GetSearch(searchModel.Name);
+        await GetSearch(searchModel.SearchTerm);
     }
 
+    //get searchterm
     public async Task GetSearch(string search)
     {
+        //creates api call with search term
         var apiName = "api/StoreApps/Search?searchTerm=" + search;
-
+        //sends query to database
         var httpResponse = await client.GetAsync(apiName);
 
         if (httpResponse.IsSuccessStatusCode)
         {
+            //outputs search response
             responseBody = await httpResponse.Content.ReadAsStringAsync();
-
+            //converts api data from json format and displays the data based on Store App controller
             StoreApps = JsonConvert.DeserializeObject<List<StoreApp>>(responseBody);
-
             StateHasChanged();
         }
     }
