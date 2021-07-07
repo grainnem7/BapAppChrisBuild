@@ -10,11 +10,10 @@
 @inject ILogger<Search> Logger
 
 <h1>View Data </h1>
-
 @*creates a search bar, and binds the search term with the search model when enter search is called when the search button is clicked*@
 <div class="row">
     <EditForm class="form-inline my-2" Model="@searchModel" OnValidSubmit="SearchStore">
-        <InputText class="form-control rounded" id="name" @bind-Value="searchModel.SearchTerm" size="22" placeholder="Search all Apps & Categories" />
+        <InputText class="form-control rounded" id="name" @bind-Value="searchModel.Name" size="22" placeholder="Search all Apps & Categories" />
         <button class="btn btn-outline-primary" type="button" @onclick="EnterSearch">Search</button>
     </EditForm>
 </div>
@@ -72,14 +71,13 @@ else
     private void SearchStore()
     {
         Logger.LogInformation("SearchStore called");
-        Logger.LogInformation(searchModel.SearchTerm);
-    }
-    // 
-    public async Task EnterSearch()
-    {
-        await GetSearch(searchModel.SearchTerm);
+        Logger.LogInformation(searchModel.Name);
     }
 
+    public async Task EnterSearch()
+    {
+        await GetSearch(searchModel.Name);
+    }
     //get searchterm
     public async Task GetSearch(string search)
     {
@@ -92,7 +90,7 @@ else
         {
             //outputs search response
             responseBody = await httpResponse.Content.ReadAsStringAsync();
-            //converts api data from json format and displays the data based on Store App controller
+            //converts api data from json format and stores the response in StoreApps
             StoreApps = JsonConvert.DeserializeObject<List<StoreApp>>(responseBody);
             StateHasChanged();
         }

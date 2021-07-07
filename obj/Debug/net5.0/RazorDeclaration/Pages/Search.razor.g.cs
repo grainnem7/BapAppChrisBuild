@@ -112,8 +112,9 @@ using Microsoft.Extensions.Logging;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 63 "C:\Users\Student\Desktop\bapteam01\BapBlazor\Pages\Search.razor"
+#line 65 "C:\Users\Student\Desktop\bapteam01\BapBlazor\Pages\Search.razor"
        
+    // creates new instance of the search model
     private SearchModel searchModel = new();
 
     //Logging Entries to Searchbox
@@ -122,9 +123,10 @@ using Microsoft.Extensions.Logging;
         Logger.LogInformation("SearchStore called");
         Logger.LogInformation(searchModel.Name);
     }
+
     public async Task EnterSearch()
     {
-        GetSearch(searchModel.Name);
+        await GetSearch(searchModel.Name);
     }
 
     string responseBody = "";
@@ -133,14 +135,16 @@ using Microsoft.Extensions.Logging;
     //get searchterm
     public async Task GetSearch(string search)
     {
+        //creates api call with search term
         var apiName = "api/StoreApps/Search?searchTerm=" + search;
-
+        //sends query to database
         var httpResponse = await client.GetAsync(apiName);
 
         if (httpResponse.IsSuccessStatusCode)
         {
+            //outputs search response
             responseBody = await httpResponse.Content.ReadAsStringAsync();
-
+            //converts api data from json format and displays the data based on Store App controller
             StoreApps = JsonConvert.DeserializeObject<List<StoreApp>>(responseBody);
 
             StateHasChanged();

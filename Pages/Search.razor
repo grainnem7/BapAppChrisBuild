@@ -9,11 +9,11 @@
 
 @using Microsoft.Extensions.Logging
 @inject ILogger<Search> Logger
-//create search bar
-//binds the search term(name)
+
+@*creates a search bar, and binds the search term with the search model when enter search is called when the search button is clicked*@
 <div class="container-fluid">
     <EditForm class="form-inline my-2" Model="@searchModel" OnValidSubmit="SearchStore">
-        <InputText class="form-control rounded" id="name" @bind-Value="searchModel.SearchTerm" placeholder="Search all Apps & Categories" />
+        <InputText class="form-control rounded" id="name" @bind-Value="searchModel.Name" placeholder="Search all Apps & Categories" />
         <button class="btn btn-outline-primary" type="button" @onclick="EnterSearch">Search</button>
     </EditForm>
 </div>
@@ -39,7 +39,6 @@
                 </tr>
             </thead>
             <tbody>
-                @*loops through store apps and display data*@
                 @foreach (var storeapp in StoreApps)
                 {
                     <tr class="justify-content-center">
@@ -64,18 +63,19 @@
 </div>
 
 @code {
+    // creates new instance of the search model
     private SearchModel searchModel = new();
 
     //Logging Entries to Searchbox
     private void SearchStore()
     {
         Logger.LogInformation("SearchStore called");
-        Logger.LogInformation(searchModel.SearchTerm);
+        Logger.LogInformation(searchModel.Name);
     }
 
     public async Task EnterSearch()
     {
-        await GetSearch(searchModel.SearchTerm);
+        await GetSearch(searchModel.Name);
     }
 
     string responseBody = "";
@@ -85,16 +85,15 @@
     public async Task GetSearch(string search)
     {
         //creates api call with search term
-        var apiurl = "api/StoreApps/Search?searchTerm=" + search;
+        var apiName = "api/StoreApps/Search?searchTerm=" + search;
         //sends query to database
-        var httpResponse = await client.GetAsync(apiurl);
-
+        var httpResponse = await client.GetAsync(apiName);
 
         if (httpResponse.IsSuccessStatusCode)
         {
             //outputs search response
             responseBody = await httpResponse.Content.ReadAsStringAsync();
-            //converts api data from json format and displays the data based on Store App controller
+            //converts api data from json format and stores the response in StoreApps
             StoreApps = JsonConvert.DeserializeObject<List<StoreApp>>(responseBody);
 
             StateHasChanged();
