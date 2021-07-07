@@ -238,10 +238,8 @@ C:\Users\grain\OneDrive\Desktop\BapTeam01\BapBlazor\obj\Debug\net5.0\BapBlazor.c
 C:\Users\grain\OneDrive\Desktop\BapTeam01\BapBlazor\obj\Debug\net5.0\BapBlazor.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\grain\OneDrive\Desktop\BapTeam01\BapBlazor\obj\Debug\net5.0\BapBlazor.RazorComponent.input.cache
 C:\Users\grain\OneDrive\Desktop\BapTeam01\BapBlazor\obj\Debug\net5.0\RazorDeclaration\App.razor.g.cs
-C:\Users\grain\OneDrive\Desktop\BapTeam01\BapBlazor\obj\Debug\net5.0\RazorDeclaration\Pages\Counter.razor.g.cs
 C:\Users\grain\OneDrive\Desktop\BapTeam01\BapBlazor\obj\Debug\net5.0\RazorDeclaration\Pages\Delete.razor.g.cs
 C:\Users\grain\OneDrive\Desktop\BapTeam01\BapBlazor\obj\Debug\net5.0\RazorDeclaration\Pages\Docs.razor.g.cs
-C:\Users\grain\OneDrive\Desktop\BapTeam01\BapBlazor\obj\Debug\net5.0\RazorDeclaration\Pages\FetchStoreApps.razor.g.cs
 C:\Users\grain\OneDrive\Desktop\BapTeam01\BapBlazor\obj\Debug\net5.0\RazorDeclaration\Pages\Index.razor.g.cs
 C:\Users\grain\OneDrive\Desktop\BapTeam01\BapBlazor\obj\Debug\net5.0\RazorDeclaration\Pages\Search.razor.g.cs
 C:\Users\grain\OneDrive\Desktop\BapTeam01\BapBlazor\obj\Debug\net5.0\RazorDeclaration\Shared\SurveyPrompt.razor.g.cs
@@ -254,10 +252,8 @@ C:\Users\grain\OneDrive\Desktop\BapTeam01\BapBlazor\obj\Debug\net5.0\BapBlazor.T
 C:\Users\grain\OneDrive\Desktop\BapTeam01\BapBlazor\obj\Debug\net5.0\BapBlazor.TagHelpers.output.cache
 C:\Users\grain\OneDrive\Desktop\BapTeam01\BapBlazor\obj\Debug\net5.0\BapBlazor.RazorCoreGenerate.cache
 C:\Users\grain\OneDrive\Desktop\BapTeam01\BapBlazor\obj\Debug\net5.0\Razor\App.razor.g.cs
-C:\Users\grain\OneDrive\Desktop\BapTeam01\BapBlazor\obj\Debug\net5.0\Razor\Pages\Counter.razor.g.cs
 C:\Users\grain\OneDrive\Desktop\BapTeam01\BapBlazor\obj\Debug\net5.0\Razor\Pages\Delete.razor.g.cs
 C:\Users\grain\OneDrive\Desktop\BapTeam01\BapBlazor\obj\Debug\net5.0\Razor\Pages\Docs.razor.g.cs
-C:\Users\grain\OneDrive\Desktop\BapTeam01\BapBlazor\obj\Debug\net5.0\Razor\Pages\FetchStoreApps.razor.g.cs
 C:\Users\grain\OneDrive\Desktop\BapTeam01\BapBlazor\obj\Debug\net5.0\Razor\Pages\Index.razor.g.cs
 C:\Users\grain\OneDrive\Desktop\BapTeam01\BapBlazor\obj\Debug\net5.0\Razor\Pages\Search.razor.g.cs
 C:\Users\grain\OneDrive\Desktop\BapTeam01\BapBlazor\obj\Debug\net5.0\Razor\Shared\SurveyPrompt.razor.g.cs
