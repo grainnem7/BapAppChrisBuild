@@ -69,7 +69,7 @@
         Logger.LogInformation("SearchStore called");
         Logger.LogInformation(searchModel.Name);
     }
-    public void EnterSearch()
+    public async Task EnterSearch()
     {
         GetSearch(searchModel.Name);
     }
