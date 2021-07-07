@@ -97,13 +97,6 @@ using Newtonsoft.Json;
 #line hidden
 #nullable disable
 #nullable restore
-#line 7 "C:\Users\grain\OneDrive\Desktop\BapTeam01\BapBlazor\Pages\Delete.razor"
-using Data;
-
-#line default
-#line hidden
-#nullable disable
-#nullable restore
 #line 9 "C:\Users\grain\OneDrive\Desktop\BapTeam01\BapBlazor\Pages\Delete.razor"
 using Microsoft.Extensions.Logging;
 

@@ -96,13 +96,6 @@ using Newtonsoft.Json;
 #line default
 #line hidden
 #nullable disable
-#nullable restore
-#line 8 "C:\Users\grain\OneDrive\Desktop\BapTeam01\BapBlazor\Pages\FetchStoreApps.razor"
-using Data;
-
-#line default
-#line hidden
-#nullable disable
     [Microsoft.AspNetCore.Components.RouteAttribute("/fetchstoreapps")]
     public partial class FetchStoreApps : Microsoft.AspNetCore.Components.ComponentBase
     {

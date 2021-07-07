@@ -97,13 +97,6 @@ using Newtonsoft.Json;
 #line hidden
 #nullable disable
 #nullable restore
-#line 8 "C:\Users\grain\OneDrive\Desktop\BapTeam01\BapBlazor\Pages\Search.razor"
-using Data;
-
-#line default
-#line hidden
-#nullable disable
-#nullable restore
 #line 10 "C:\Users\grain\OneDrive\Desktop\BapTeam01\BapBlazor\Pages\Search.razor"
 using Microsoft.Extensions.Logging;
 
