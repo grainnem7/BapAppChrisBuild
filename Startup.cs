@@ -10,9 +10,8 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-//using BapBlazor.Data;
 
-namespace BapBlazor
+namespace ContosoBlazor
 {
     public class Startup
     {
@@ -31,8 +30,8 @@ namespace BapBlazor
 
             services.AddScoped<HttpClient>(s =>
             {
-                return new HttpClient { BaseAddress = new Uri(@"https://bapteam01api.azurewebsites.net") };
-                // return new HttpClient { BaseAddress = new Uri(@"http://localhost:5002/") };
+                return new HttpClient { BaseAddress = new Uri(@"https://contososhrimpapi.azurewebsites.net/") };
+                
             });
         }
 

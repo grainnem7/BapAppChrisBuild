@@ -7,110 +7,75 @@
 
 
 @using Microsoft.Extensions.Logging
-@inject ILogger<Search> Logger
+
 
 <h1>View Data </h1>
-@*creates a search bar, and binds the search term with the search model when enter search is called when the search button is clicked*@
-<div class="row">
-    <EditForm class="form-inline my-2" Model="@searchModel" OnValidSubmit="SearchStore">
-        <InputText class="form-control rounded" id="name" @bind-Value="searchModel.Name" size="22" placeholder="Search all Apps & Categories" />
-        <button class="btn btn-outline-primary" type="button" @onclick="EnterSearch">Search</button>
-    </EditForm>
-</div>
+
 
 <div class="row">
     <button class="btn btn-primary" @onclick="Previous">Previous</button> &nbsp; <button class="btn btn-primary" @onclick="Next">Next</button>
 </div>
-@if (StoreApps == null)
+@if (Ponds == null)
 {
     <p><em>Loading...</em></p>
-}
+} 
 else
 {
-    <table class="table">
-        <thead>
-            @*Creates links to sort data by clickable column names*@
-            <tr>
-                <td class="sort-link" @onclick=@(() => SortTableById())>Id </td>
-                <td class="sort-link" @onclick=@(() => SortTableByName())>Name</td>
-                <td class="sort-link" @onclick=@(() => SortTableByRating())>Rating</td>
-                <td class="sort-link" @onclick=@(() => SortTableByPeople())>People</td>
-                <td class="sort-link" @onclick=@(() => SortTableByCategory())>Category</td>
-                <td class="sort-link" @onclick=@(() => SortTableByDate())>Date</td>
-                <td class="sort-link" @onclick=@(() => SortTableByPrice())>Price</td>
-            </tr>
-        </thead>
-        <tbody>
-            @*Loop through apps and display data*@
-            @foreach (var storeapp in StoreApps)
-            {
-                if (StoreApps.IndexOf(storeapp) >= pageStart && StoreApps.IndexOf(storeapp) < pageEnd)
-                {
-                    <tr class="justify-content-space-evenly">
-                        <td>@storeapp.Id</td>
-                        <td>@storeapp.Name</td>
-                        <td>@storeapp.Rating</td>
-                        <td>@storeapp.People</td>
-                        <td>@storeapp.Category</td>
-                        <td>@storeapp.Date</td>
-                        <td>@storeapp.Price</td>
+            <table class="table table-bordered table-striped">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Id</th>
+                        <th>Pond_Id</th>
+                        <th>Start_Date</th>
+                        <th>Intial_Population</th>
+                        <th>Intial_Average_Weight</th>
+                        <th>Estimated_End_Date</th>                  
                     </tr>
-                }
-            }
-        </tbody>
-    </table>
-}
+            </thead>
+            <tbody>
+                @foreach (var pond in Ponds)
+                {
+                    <tr class="justify-content-center">
+                        <td>@pond.ID</td>
+                        <td>@pond.PondID</td>
+                        <td>@pond.Start_Date</td>
+                        <td>@pond.Intial_Population</td>
+                        <td>@pond.Intial_Average_Weight</td>
+                        <td>@pond.Estimated_End_Date</td>
+                    </tr>
+                }  
+                
+            </tbody>
+        </table>
+    }
+       
+
+
+
+
 <button class="btn btn-primary" @onclick="Previous">Previous</button> &nbsp; <button class="btn btn-primary" @onclick="Next">Next</button>
 
 @code {
 
-    // creates new instance of the search model
-    private SearchModel searchModel = new();
+  
 
-    //Logging Entries to Searchbox
-    private void SearchStore()
-    {
-        Logger.LogInformation("SearchStore called");
-        Logger.LogInformation(searchModel.Name);
-    }
-
-    public async Task EnterSearch()
-    {
-        await GetSearch(searchModel.Name);
-    }
-    //get searchterm
-    public async Task GetSearch(string search)
-    {
-        //creates api call with search term
-        var apiName = "api/StoreApps/Search?searchTerm=" + search;
-        //sends query to database
-        var httpResponse = await client.GetAsync(apiName);
-
-        if (httpResponse.IsSuccessStatusCode)
-        {
-            //outputs search response
-            responseBody = await httpResponse.Content.ReadAsStringAsync();
-            //converts api data from json format and stores the response in StoreApps
-            StoreApps = JsonConvert.DeserializeObject<List<StoreApp>>(responseBody);
-            StateHasChanged();
-        }
-    }
+   
 
     private string responseBody = "";
     private bool IsSortedAscending;
     private string CurrentSortColumn;
 
-    List<StoreApp> StoreApps = new List<StoreApp>();
+    List<PondData> Ponds = new List<PondData>();
 
     protected override async Task OnInitializedAsync()
     {
-        var apiName = "api/StoreApps";
+        var apiName = "api/Pond";
         var httpResponse = await client.GetAsync(apiName);
 
         if (httpResponse.IsSuccessStatusCode)
         {
             responseBody = await httpResponse.Content.ReadAsStringAsync();
-            StoreApps = JsonConvert.DeserializeObject<List<StoreApp>>(responseBody);
+            Ponds = JsonConvert.DeserializeObject<List<PondData>>(responseBody);
             StateHasChanged();
         }
     }
@@ -141,110 +106,110 @@ else
     /// <summary>
     /// Sorting methods use the isSortedAscending and if/else to determine whether to sort ascending or descending
     /// </summary>
-    public void SortTableById()
-    {
-        if (IsSortedAscending)
-        {
-            StoreApps.Sort((x, y) => x.Id.CompareTo(y.Id));
-        }
-        else
-        {
-            StoreApps.Sort((x, y) => y.Id.CompareTo(x.Id));
-        }
+    //public void SortTableById()
+    //{
+    //    if (IsSortedAscending)
+    //    {
+    //        Ponds.Sort((x, y) => x.Id.CompareTo(y.Id));
+    //    }
+    //    else
+    //    {
+    //        Ponds.Sort((x, y) => y.Id.CompareTo(x.Id));
+    //    }
 
-        IsSortedAscending = !IsSortedAscending;
-    }
+    //    IsSortedAscending = !IsSortedAscending;
+    //}
 
-    public void SortTableByName()
-    {
+    //public void SortTableByName()
+    //{
 
-        if (IsSortedAscending)
-        {
-            StoreApps.Sort((x, y) => x.Name.CompareTo(y.Name));
-        }
+    //    if (IsSortedAscending)
+    //    {
+    //        Ponds.Sort((x, y) => x.Name.CompareTo(y.Name));
+    //    }
 
-        else
-        {
-            StoreApps.Sort((x, y) => y.Name.CompareTo(x.Name));
-        }
+    //    else
+    //    {
+    //        Ponds.Sort((x, y) => y.Name.CompareTo(x.Name));
+    //    }
 
-        IsSortedAscending = !IsSortedAscending;
-    }
+    //    IsSortedAscending = !IsSortedAscending;
+    //}
 
-    public void SortTableByRating()
-    {
-        if (IsSortedAscending)
-        {
-            StoreApps.Sort((x, y) => x.Rating.CompareTo(y.Rating));
-        }
-        else
-        {
-            StoreApps.Sort((x, y) => y.Rating.CompareTo(x.Rating));
-        }
+    //public void SortTableByRating()
+    //{
+    //    if (IsSortedAscending)
+    //    {
+    //        Ponds.Sort((x, y) => x.Rating.CompareTo(y.Rating));
+    //    }
+    //    else
+    //    {
+    //        Ponds.Sort((x, y) => y.Rating.CompareTo(x.Rating));
+    //    }
 
-        IsSortedAscending = !IsSortedAscending;
-    }
+    //    IsSortedAscending = !IsSortedAscending;
+    //}
 
-    public void SortTableByPeople()
-    {
-        if (IsSortedAscending)
-        {
-            StoreApps.Sort((x, y) => x.People.CompareTo(y.People));
-        }
-        else
-        {
-            StoreApps.Sort((x, y) => y.People.CompareTo(x.People));
-        }
+    //public void SortTableByPeople()
+    //{
+    //    if (IsSortedAscending)
+    //    {
+    //        Ponds.Sort((x, y) => x.People.CompareTo(y.People));
+    //    }
+    //    else
+    //    {
+    //        Ponds.Sort((x, y) => y.People.CompareTo(x.People));
+    //    }
 
-        IsSortedAscending = !IsSortedAscending;
-    }
+    //    IsSortedAscending = !IsSortedAscending;
+    //}
 
-    public void SortTableByCategory()
-    {
-        if (IsSortedAscending)
-        {
-            StoreApps.Sort((x, y) => x.Category.CompareTo(y.Category));
-        }
-        else
-        {
-            StoreApps.Sort((x, y) => y.Category.CompareTo(x.Category));
-        }
+    //public void SortTableByCategory()
+    //{
+    //    if (IsSortedAscending)
+    //    {
+    //        Ponds.Sort((x, y) => x.Category.CompareTo(y.Category));
+    //    }
+    //    else
+    //    {
+    //        Ponds.Sort((x, y) => y.Category.CompareTo(x.Category));
+    //    }
 
-        IsSortedAscending = !IsSortedAscending;
-    }
+    //    IsSortedAscending = !IsSortedAscending;
+    //}
 
-    public void SortTableByDate()
-    {
-        foreach (var storeapp in StoreApps)
-        {
-            string sourceDate = storeapp.Date;
-            DateTime sourceDatenew = DateTime.Parse(storeapp.Date);
-            string formatted = sourceDatenew.ToString("yyyy/MM/dd");
-            storeapp.Date = formatted;
-        }
-        if (IsSortedAscending)
-        {
-            StoreApps.Sort((x, y) => x.Date.CompareTo(y.Date));
-        }
-        else
-        {
-            StoreApps.Sort((x, y) => y.Category.CompareTo(x.Category));
-        }
+    //public void SortTableByDate()
+    //{
+    //    foreach (var storeapp in Ponds)
+    //    {
+    //        string sourceDate = storeapp.Date;
+    //        DateTime sourceDatenew = DateTime.Parse(storeapp.Date);
+    //        string formatted = sourceDatenew.ToString("yyyy/MM/dd");
+    //        storeapp.Date = formatted;
+    //    }
+    //    if (IsSortedAscending)
+    //    {
+    //        Ponds.Sort((x, y) => x.Date.CompareTo(y.Date));
+    //    }
+    //    else
+    //    {
+    //        Ponds.Sort((x, y) => y.Category.CompareTo(x.Category));
+    //    }
 
-        IsSortedAscending = !IsSortedAscending;
-    }
+    //    IsSortedAscending = !IsSortedAscending;
+    //}
 
-    public void SortTableByPrice()
-    {
-        if (IsSortedAscending)
-        {
-            StoreApps.Sort((x, y) => x.Price.CompareTo(y.Price));
-        }
-        else
-        {
-            StoreApps.Sort((x, y) => y.Price.CompareTo(x.Price));
-        }
+    //public void SortTableByPrice()
+    //{
+    //    if (IsSortedAscending)
+    //    {
+    //        Ponds.Sort((x, y) => x.Price.CompareTo(y.Price));
+    //    }
+    //    else
+    //    {
+    //        StoreApps.Sort((x, y) => y.Price.CompareTo(x.Price));
+    //    }
 
-        IsSortedAscending = !IsSortedAscending;
-    }
+    //    IsSortedAscending = !IsSortedAscending;
+    //}
 }
